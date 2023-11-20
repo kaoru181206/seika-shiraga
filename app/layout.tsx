@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Marcellus } from 'next/font/google'
 import './globals.css'
+import ClientOnly from './components/ClientOnly'
+import Navbar from './components/navbar/Navbar'
+
 
 const marcellus = Marcellus({
   weight: "400",
@@ -19,7 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={marcellus.className}>{children}</body>
+      <body className={marcellus.className}>
+        <ClientOnly>
+          <Navbar />
+        </ClientOnly>
+        {/* {children} */}
+      </body>
     </html>
   )
 }
