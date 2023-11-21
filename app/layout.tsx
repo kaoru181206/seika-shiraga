@@ -25,8 +25,8 @@ export default function RootLayout({
       <body className={marcellus.className}>
         <ClientOnly>
           <Navbar />
+          {children}
         </ClientOnly>
-        {/* {children} */}
       </body>
     </html>
   )
