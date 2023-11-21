@@ -23,20 +23,20 @@ const Navbar: React.FC = () => {
 
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [isScrolled, setIsScrolled] = useState(true);
-  
+
     // スクロール時のNavbar 表示・非表示イベントの登録
     useEffect(() => {
-      const handleScroll = () => {
-        const currentScrollPos = window.scrollY;
-        setIsScrolled(prevScrollPos > currentScrollPos || currentScrollPos < 100);
-        setPrevScrollPos(currentScrollPos);
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-  
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
+        const handleScroll = () => {
+            const currentScrollPos = window.scrollY;
+            setIsScrolled(prevScrollPos > currentScrollPos || currentScrollPos < 100);
+            setPrevScrollPos(currentScrollPos);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, [prevScrollPos]);
 
     // HambergerMenu 表示・非表示
@@ -63,8 +63,8 @@ const Navbar: React.FC = () => {
                             {isClick ? (
                                 <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="24" height="24" fill="white" />
-                                    <path d="M7 17L16.8995 7.10051" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M7 7.00001L16.8995 16.8995" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path d="M7 17L16.8995 7.10051" stroke="#121212" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path d="M7 7.00001L16.8995 16.8995" stroke="#121212" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             ) : (
                                 <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,7 +122,9 @@ const Navbar: React.FC = () => {
                         </div>
                     </div>
                     <div className={`items-center mr-30 justify-center group-hover:flex-grow group-hover:flex ${isClick ? 'flex-grow flex' : 'hidden'}`}>
-                        <Image className="cursor-pointer" height={56} width={144} src="/assets/seika-shiraga-logo.png" alt="seika-shiraga-logo" />
+                        <Link href="/">
+                            <Image className="cursor-pointer" height={56} width={144} src="/assets/seika-shiraga-logo.png" alt="seika-shiraga-logo" />
+                        </Link>
                     </div>
                     <div className="hidden pr-4 pl-40 py-7 mr-4 lg:block">
                         <div className="items-center space-x-4">
@@ -174,7 +176,7 @@ const Navbar: React.FC = () => {
                                 </li>
                             </ul>
                         </details>
-                        <Link className="block py-3 px-6 hover:bg-slate-50" href="">
+                        <Link className="block py-3 px-6 hover:bg-slate-50" href="/contact" onClick={() => setIsClick(false)}>
                             CONTACT
                         </Link>
                         <Link className="block py-3 px-6 hover:bg-slate-50" href="https://seikashiraga.official.ec/">
