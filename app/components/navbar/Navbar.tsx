@@ -77,7 +77,8 @@ const Navbar: React.FC = () => {
                     </div>
                     <div className="hidden lg:block">
                         <div className="ml-4 flex items-center">
-                            <div className="group/forAll px-4 py-7">
+                            {/* TODO 商品数増で実装予定 */}
+                            {/* <div className="group/forAll px-4 py-7">
                                 <Link href="#">
                                     For All
                                 </Link>
@@ -90,7 +91,7 @@ const Navbar: React.FC = () => {
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="group/collections px-4 py-7">
                                 <Link href="#">
                                     Collections
@@ -119,6 +120,11 @@ const Navbar: React.FC = () => {
                                     </ul>
                                 </div>
                             </div>
+                            <div className="px-4 py-7">
+                                <Link href="/contact">
+                                    Contact
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className={`items-center mr-30 justify-center group-hover:flex-grow group-hover:flex ${isClick ? 'flex-grow flex' : 'hidden'}`}>
@@ -139,7 +145,8 @@ const Navbar: React.FC = () => {
             {isClick && (
                 <div className="text-xl w-5/6 md:w-1/2 h-screen lg:hidden bg-white z-10">
                     <div className="">
-                        <details className="text-left cursor-pointer">
+                        {/* TODO 商品数増で実装予定 */}
+                        {/* <details className="text-left cursor-pointer">
                             <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="forAll" onClick={() => toggleMenu("forAll")}>
                                 FOR ALL {isClickMenu.forAll ? "-" : "+"}
                             </summary>
@@ -150,7 +157,7 @@ const Navbar: React.FC = () => {
                                     </Link>
                                 </li>
                             </ul>
-                        </details>
+                        </details> */}
 
                         <details className="text-left cursor-pointer">
                             <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="collections" onClick={() => toggleMenu("collections")}>
@@ -182,9 +189,9 @@ const Navbar: React.FC = () => {
                         <Link className="block py-3 px-6 hover:bg-slate-50" href="https://seikashiraga.official.ec/">
                             ONLINE STORE
                         </Link>
-                        <Link className="block py-3 px-6 hover:bg-slate-50" href="https://instagram.com/seika_shiraga.official?igshid=OGQ5ZDc2ODk2ZA==">
+                        {/* <Link className="block py-3 px-6 hover:bg-slate-50" href="https://instagram.com/seika_shiraga.official?igshid=OGQ5ZDc2ODk2ZA==">
                             INSTAGRAM
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             )}
