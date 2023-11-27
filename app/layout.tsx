@@ -3,6 +3,7 @@ import { Marcellus } from 'next/font/google'
 import './globals.css'
 import ClientOnly from './components/ClientOnly'
 import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer'
 
 
 const marcellus = Marcellus({
@@ -22,10 +23,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={marcellus.className}>
+      <body className={`${marcellus.className} flex flex-col min-h-screen`}>
         <ClientOnly>
           <Navbar />
-          {children}
+          <div className='flex-grow pb-10'>
+            {children}
+          </div>
+          <Footer />
         </ClientOnly>
       </body>
     </html>
