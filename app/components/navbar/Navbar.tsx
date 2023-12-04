@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
                                 <div className="hidden w-full px-12 h-[50vh] absolute top-20 left-0 bg-white group-hover/collections:block hover:block">
                                     <ul className="">
                                         <li>
-                                            <Link className="" href="">
+                                            <Link className="" href="/collections/first-collection">
                                                 First Collection
                                             </Link>
                                         </li>
@@ -165,7 +165,7 @@ const Navbar: React.FC = () => {
                             </summary>
                             <ul className="text-lg py-3 px-6 hover:bg-slate-50">
                                 <li>
-                                    <Link className="block" href="">
+                                    <Link className="block" href="/collections/first-collection">
                                         First Collection
                                     </Link>
                                 </li>
