@@ -4,6 +4,8 @@ import ThumbImage from "./ThumbImage";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 import { useState } from "react";
+import { IoClose } from "react-icons/io5";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 // Swiper styles
 import 'swiper/css';
@@ -71,26 +73,24 @@ const ImageList: React.FC<ImageListProps> = ({
             {/* Image Modal */}
             {
                 isOpen && (
-                    <div className="fixed z-50 inset-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-                        <button className="absolute top-5 right-5" onClick={handleCloseLightBox}>
-                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="24" height="24" fill="white" />
-                                <path d="M7 17L16.8995 7.10051" stroke="#121212" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M7 7.00001L16.8995 16.8995" stroke="#121212" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                    <div className="fixed z-50 inset-0 w-full h-full bg-white bg-opacity-70 flex items-center justify-center">
+                        <button className="z-50 absolute top-5 right-5 opacity-40" onClick={handleCloseLightBox}>
+                            <IoClose size={25}/>
                         </button>
                         <Swiper
-                            // navigation
-                            // pagination={{ type: 'fraction' }}
-                            // modules={[Navigation, Pagination]}
-                            className="w-full h-[95%] flex items-center justify-center"
+                            className="imagesSwiper w-full md:w-3/4 lg:w-2/3 h-[95%] flex items-center justify-center"
+                            speed={800}
                             spaceBetween={30}
                             effect={'fade'}
-                            navigation={true}
+                            navigation={{
+                                nextEl: ".button-next-slide",
+                                prevEl: ".button-prev-slide",
+                            }}
                             pagination={{
                                 clickable: true,
                             }}
                             modules={[EffectFade, Navigation, Pagination]}
+                            loop={true}
                         >
                             {
                                 lightBoxImages.map((image) => (
@@ -101,11 +101,20 @@ const ImageList: React.FC<ImageListProps> = ({
                                                 alt=""
                                                 width={500}
                                                 height={500}
+                                                className=""
                                             />
                                         </div>
                                     </SwiperSlide>
                                 ))
                             }
+                            <div className="z-50 absolute inset-0 flex items-center justify-between p-4">
+                                <div className="button-next-slide cursor-pointer opacity-40">
+                                    <FaChevronLeft size={25} />
+                                </div>
+                                <div className="button-prev-slide cursor-pointer opacity-40">
+                                    <FaChevronRight size={25} />
+                                </div>
+                            </div>
                         </Swiper>
                     </div>
                 )
