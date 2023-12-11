@@ -44,8 +44,6 @@ const ImageList: React.FC<ImageListProps> = ({
         setIsOpen(false);
     }
 
-
-
     return (
         <>
             <div className="w-full min-h-screen text-[#121212] pt-24">
@@ -83,14 +81,14 @@ const ImageList: React.FC<ImageListProps> = ({
                             spaceBetween={30}
                             effect={'fade'}
                             navigation={{
-                                nextEl: ".button-next-slide",
                                 prevEl: ".button-prev-slide",
+                                nextEl: ".button-next-slide",
                             }}
                             pagination={{
-                                clickable: true,
+                                type: 'fraction',
                             }}
                             modules={[EffectFade, Navigation, Pagination]}
-                            loop={true}
+                            loop={false}
                         >
                             {
                                 lightBoxImages.map((image) => (
@@ -108,10 +106,10 @@ const ImageList: React.FC<ImageListProps> = ({
                                 ))
                             }
                             <div className="z-50 absolute inset-0 flex items-center justify-between p-4">
-                                <div className="button-next-slide cursor-pointer opacity-40">
+                                <div className="button-prev-slide cursor-pointer opacity-40">
                                     <FaChevronLeft size={25} />
                                 </div>
-                                <div className="button-prev-slide cursor-pointer opacity-40">
+                                <div className="button-next-slide cursor-pointer opacity-40">
                                     <FaChevronRight size={25} />
                                 </div>
                             </div>
