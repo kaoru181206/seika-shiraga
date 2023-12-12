@@ -1,5 +1,4 @@
 import ImageList from "@/app/components/ImageList";
-import ThumbImage from "@/app/components/ThumbImage";
 import supabase from "@/app/utils/supabase";
 
 export const revalidate = 0

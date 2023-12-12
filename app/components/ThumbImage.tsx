@@ -22,7 +22,7 @@ const ThumbImage: React.FC<ThumbImageProps> = ({
                     width={1000}
                     height={1000}
                     alt={alt}
-                    className="hover:scale-105 transition-all ease-linear cursor-pointer"
+                    className="hover:opacity-80 transition-all ease-linear duration-150 cursor-pointer"
                 />
             </button>
         </div>

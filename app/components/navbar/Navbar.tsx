@@ -22,13 +22,13 @@ const Navbar: React.FC = () => {
     })
 
     const [prevScrollPos, setPrevScrollPos] = useState(0);
-    const [isScrolled, setIsScrolled] = useState(true);
+    const [isScrollTop, setIsScrollTop] = useState(true);
 
     // スクロール時のNavbar 表示・非表示イベントの登録
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollPos = window.scrollY;
-            setIsScrolled(prevScrollPos > currentScrollPos || currentScrollPos < 100);
+            setIsScrollTop(currentScrollPos === 0);
             setPrevScrollPos(currentScrollPos);
         };
 
@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className={`fixed w-full ${isScrolled ? 'block' : 'hidden'}`}>
+        <nav className={`fixed w-full ${isScrollTop ? 'block' : 'hidden'}`}>
             <div className={`max-w-full text-[#FBFBFB] mx-auto px-4 md:px-6 lg:px-8 hover:text-[#121212] hover:bg-white group ${isClick && 'bg-white'} transition-all duration-500 ease-out`} >
                 {/* Desktop Menu */}
                 <div className="flex items-center justify-between h-20">
