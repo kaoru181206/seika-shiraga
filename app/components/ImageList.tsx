@@ -21,7 +21,6 @@ interface ImageListProps {
 const ImageList: React.FC<ImageListProps> = ({
     images
 }) => {
-    console.log(images);
     const [isOpen, setIsOpen] = useState(false);
     const [lightBoxImages, setLightBoxImages] = useState<any[]>([]);
 
@@ -69,55 +68,50 @@ const ImageList: React.FC<ImageListProps> = ({
 
             </div>
             {/* Image Modal */}
-            {
-                isOpen && (
-                    <div className="fixed z-50 inset-0 w-full h-full bg-white bg-opacity-70 flex items-center justify-center">
-                        <button className="z-50 absolute top-5 right-5 opacity-40" onClick={handleCloseLightBox}>
-                            <IoClose size={25}/>
-                        </button>
-                        <Swiper
-                            className="imagesSwiper w-full md:w-3/4 lg:w-2/3 h-[95%] flex items-center justify-center"
-                            speed={800}
-                            spaceBetween={30}
-                            effect={'fade'}
-                            navigation={{
-                                prevEl: ".button-prev-slide",
-                                nextEl: ".button-next-slide",
-                            }}
-                            pagination={{
-                                type: 'fraction',
-                            }}
-                            modules={[EffectFade, Navigation, Pagination]}
-                            loop={false}
-                        >
-                            {
-                                lightBoxImages.map((image) => (
-                                    <SwiperSlide key={image.id_seq}>
-                                        <div className="flex h-full items-center justify-center">
-                                            <Image
-                                                src={image.imgSrc}
-                                                alt=""
-                                                width={500}
-                                                height={500}
-                                                className=""
-                                            />
-                                        </div>
-                                    </SwiperSlide>
-                                ))
-                            }
-                            <div className="z-50 absolute inset-0 flex items-center justify-between p-4">
-                                <div className="button-prev-slide cursor-pointer opacity-40">
-                                    <FaChevronLeft size={25} />
+            <div className={`fixed z-50 inset-0 w-full h-full bg-white bg-opacity-70 flex items-center justify-center ${isOpen ? 'opacity-100' : 'opacity-0 invisible'} transition-all duration-500 ease-out`}>
+                <button className="z-50 absolute top-5 right-5 opacity-40" onClick={handleCloseLightBox}>
+                    <IoClose size={25}/>
+                </button>
+                <Swiper
+                    className="imagesSwiper w-full md:w-3/4 lg:w-2/3 h-[95%] flex items-center justify-center"
+                    speed={800}
+                    spaceBetween={30}
+                    effect={'fade'}
+                    navigation={{
+                        prevEl: ".button-prev-slide",
+                        nextEl: ".button-next-slide",
+                    }}
+                    pagination={{
+                        type: 'fraction',
+                    }}
+                    modules={[EffectFade, Navigation, Pagination]}
+                    loop={false}
+                >
+                    {
+                        lightBoxImages.map((image) => (
+                            <SwiperSlide key={image.id_seq}>
+                                <div className="flex h-full items-center justify-center">
+                                    <Image
+                                        src={image.imgSrc}
+                                        alt=""
+                                        width={500}
+                                        height={500}
+                                        className=""
+                                    />
                                 </div>
-                                <div className="button-next-slide cursor-pointer opacity-40">
-                                    <FaChevronRight size={25} />
-                                </div>
-                            </div>
-                        </Swiper>
+                            </SwiperSlide>
+                        ))
+                    }
+                    <div className="z-50 absolute inset-0 flex items-center justify-between p-4">
+                        <div className="button-prev-slide cursor-pointer opacity-40">
+                            <FaChevronLeft size={25} />
+                        </div>
+                        <div className="button-next-slide cursor-pointer opacity-40">
+                            <FaChevronRight size={25} />
+                        </div>
                     </div>
-                )
-            }
-
+                </Swiper>
+            </div>
         </>
 
     )
