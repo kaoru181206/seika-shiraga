@@ -22,13 +22,16 @@ const Navbar: React.FC = () => {
     })
 
     const [prevScrollPos, setPrevScrollPos] = useState(0);
-    const [isScrolled, setIsScrolled] = useState(true);
+    const [isScrollTop, setIsScrollTop] = useState(true);
+
+    // Hover state
+    const [isHover, setIsHover] = useState(false);
 
     // スクロール時のNavbar 表示・非表示イベントの登録
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollPos = window.scrollY;
-            setIsScrolled(prevScrollPos > currentScrollPos || currentScrollPos < 100);
+            setIsScrollTop(currentScrollPos === 0);
             setPrevScrollPos(currentScrollPos);
         };
 
@@ -40,7 +43,7 @@ const Navbar: React.FC = () => {
     }, [prevScrollPos]);
 
     // HambergerMenu 表示・非表示
-    const toggleNavbar = (): void => {
+    const toggleHmabMn = (): void => {
         setIsClick(!isClick);
     }
 
@@ -53,53 +56,35 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className={`fixed w-full ${isScrolled ? 'block' : 'hidden'}`}>
-            <div className={`max-w-full text-[#FBFBFB] mx-auto px-4 md:px-6 lg:px-8 hover:text-[#121212] hover:bg-white group ${isClick && 'bg-white'} transition-all duration-500 ease-out`} >
+        <nav>
+            <div className={`z-50 fixed w-full max-w-full mx-auto px-4 md:px-6 lg:px-8 ${(isHover || isScrollTop || isClick) ? 'text-[#121212] bg-white' : 'text-[#FBFBFB]'} transition-all duration-500 ease-out`}
+                onMouseEnter={() => setIsHover(true)} 
+                onMouseLeave={() => setIsHover(false)}
+            >
                 {/* Desktop Menu */}
                 <div className="flex items-center justify-between h-20">
                     <div className="lg:hidden flex items-center">
-                        {/* Mobile Menu Hamberger Icon */}
-                        <button className="inline-flex items-center justify-center p-2" onClick={toggleNavbar}>
-                            {isClick ? (
-                                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="24" height="24" fill="white" />
-                                    <path d="M7 17L16.8995 7.10051" stroke="#121212" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M7 7.00001L16.8995 16.8995" stroke="#121212" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            ) : (
-                                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path className="group-hover:stroke-[#121212]" d="M4 18L20 18" stroke="#FBFBFB" strokeWidth="1" strokeLinecap="round" />
-                                    <path className="group-hover:stroke-[#121212]" d="M4 12L20 12" stroke="#FBFBFB" strokeWidth="1" strokeLinecap="round" />
-                                    <path className="group-hover:stroke-[#121212]" d="M4 6L20 6" stroke="#FBFBFB" strokeWidth="1" strokeLinecap="round" />
-                                </svg>
-                            )}
+                        {/* Mobile Menu Hamberger */}
+                        <button
+                            className="inline-flex flex-col h-10 w-10 rounded justify-center items-center"
+                            onClick={toggleHmabMn}
+                        >
+                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${(isClick || isHover || isScrollTop) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "rotate-45 translate-y-[9px]"}`}/>
+                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${(isClick || isHover || isScrollTop) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "opacity-0"}`}/>
+                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${(isClick ||  isHover || isScrollTop) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "-rotate-45 -translate-y-[9px]"}`}
+                            />
                         </button>
                     </div>
                     <div className="hidden lg:block">
                         <div className="ml-4 flex items-center">
-                            {/* TODO 商品数増で実装予定 */}
-                            {/* <div className="group/forAll px-4 py-7">
-                                <Link href="#">
-                                    For All
-                                </Link>
-                                <div className="hidden w-full px-12 h-[50vh] absolute top-20 left-0 bg-white group-hover/forAll:block hover:block">
-                                    <ul className="">
-                                        <li>
-                                            <Link className="" href="">
-                                                New In
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div> */}
                             <div className="group/collections px-4 py-7">
                                 <Link href="#">
                                     Collections
                                 </Link>
-                                <div className="hidden w-full px-12 h-[50vh] absolute top-20 left-0 bg-white group-hover/collections:block hover:block">
+                                <div className="hidden w-full px-12 h-[20vh] absolute top-20 left-0 bg-white group-hover/collections:block hover:block">
                                     <ul className="">
                                         <li>
-                                            <Link className="" href="">
+                                            <Link className="" href="/collections/first-collection">
                                                 First Collection
                                             </Link>
                                         </li>
@@ -110,7 +95,7 @@ const Navbar: React.FC = () => {
                                 <Link href="#">
                                     About
                                 </Link>
-                                <div className="hidden w-full px-12 h-[50vh] absolute top-20 left-0 bg-white group-hover/about:block hover:block">
+                                <div className="hidden w-full px-12 h-[20vh] absolute top-20 left-0 bg-white group-hover/about:block hover:block">
                                     <ul className="">
                                         <li>
                                             <Link className="" href="">
@@ -127,7 +112,7 @@ const Navbar: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={`items-center mr-30 justify-center group-hover:flex-grow group-hover:flex ${isClick ? 'flex-grow flex' : 'hidden'}`}>
+                    <div className={`items-center mr-30 justify-center group-hover:flex-grow group-hover:flex ${(isClick || isHover || isScrollTop) ? 'flex-grow flex' : 'hidden'}`}>
                         <Link href="/">
                             <Image className="cursor-pointer" height={56} width={144} src="/assets/seika-shiraga-logo.png" alt="seika-shiraga-logo" />
                         </Link>
@@ -142,59 +127,49 @@ const Navbar: React.FC = () => {
                 </div>
             </div>
             {/* Mobile Menu */}
-            {isClick && (
-                <div className="text-xl w-5/6 md:w-1/2 h-screen lg:hidden bg-white z-10">
-                    <div className="">
-                        {/* TODO 商品数増で実装予定 */}
-                        {/* <details className="text-left cursor-pointer">
-                            <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="forAll" onClick={() => toggleMenu("forAll")}>
-                                FOR ALL {isClickMenu.forAll ? "-" : "+"}
-                            </summary>
-                            <ul className="text-lg py-3 px-6 hover:bg-slate-50">
-                                <li>
-                                    <Link className="block" href="">
-                                        New In
-                                    </Link>
-                                </li>
-                            </ul>
-                        </details> */}
-
-                        <details className="text-left cursor-pointer">
-                            <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="collections" onClick={() => toggleMenu("collections")}>
-                                COLLECTIONS {isClickMenu.collections ? "-" : "+"}
-                            </summary>
-                            <ul className="text-lg py-3 px-6 hover:bg-slate-50">
-                                <li>
-                                    <Link className="block" href="">
-                                        First Collection
-                                    </Link>
-                                </li>
-                            </ul>
-                        </details>
-                        <details className="text-left cursor-pointer">
-                            <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="about" onClick={() => toggleMenu("about")}>
-                                ABOUT {isClickMenu.about ? "-" : "+"}
-                            </summary>
-                            <ul className="text-lg py-3 px-6 hover:bg-slate-50">
-                                <li>
-                                    <Link className="block" href="">
-                                        About Seika Shiraga
-                                    </Link>
-                                </li>
-                            </ul>
-                        </details>
-                        <Link className="block py-3 px-6 hover:bg-slate-50" href="/contact" onClick={() => setIsClick(false)}>
-                            CONTACT
-                        </Link>
-                        <Link className="block py-3 px-6 hover:bg-slate-50" href="https://seikashiraga.official.ec/">
-                            ONLINE STORE
-                        </Link>
-                        {/* <Link className="block py-3 px-6 hover:bg-slate-50" href="https://instagram.com/seika_shiraga.official?igshid=OGQ5ZDc2ODk2ZA==">
+            <div className={`fixed top-20 left-0 text-xl w-5/6 md:w-1/2 h-screen lg:hidden bg-white z-10 transition-all duration-500 ease-in ${isClick ? 'left-0' : 'left-[-100%]'}`}>
+                <div className="">
+                    <details className="text-left cursor-pointer">
+                        <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="collections" 
+                                onClick={() => toggleMenu("collections")}
+                        >
+                            COLLECTIONS {isClickMenu.collections ? "-" : "+"}
+                        </summary>
+                        <ul className="text-lg py-3 px-6 hover:bg-slate-50">
+                            <li>
+                                <Link className="block" href="/collections/first-collection">
+                                    First Collection
+                                </Link>
+                            </li>
+                        </ul>
+                    </details>
+                    <details className="text-left cursor-pointer">
+                        <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="about" 
+                                onClick={() => toggleMenu("about")}
+                        >
+                            ABOUT {isClickMenu.about ? "-" : "+"}
+                        </summary>
+                        <ul className="text-lg py-3 px-6 hover:bg-slate-50">
+                            <li>
+                                <Link className="block" href="">
+                                    About Seika Shiraga
+                                </Link>
+                            </li>
+                        </ul>
+                    </details>
+                    <Link className="block py-3 px-6 hover:bg-slate-50" href="/contact" 
+                            onClick={() => setIsClick(false)}
+                    >
+                        CONTACT
+                    </Link>
+                    <Link className="block py-3 px-6 hover:bg-slate-50" href="https://seikashiraga.official.ec/">
+                        ONLINE STORE
+                    </Link>
+                    {/* <Link className="block py-3 px-6 hover:bg-slate-50" href="https://instagram.com/seika_shiraga.official?igshid=OGQ5ZDc2ODk2ZA==">
                             INSTAGRAM
                         </Link> */}
-                    </div>
                 </div>
-            )}
+            </div>
         </nav>
     )
 }
