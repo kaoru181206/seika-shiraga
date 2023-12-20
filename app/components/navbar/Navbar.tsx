@@ -55,11 +55,9 @@ const Navbar: React.FC = () => {
         }));
     };
 
-    
-
     return (
         <nav>
-            <div className={`fixed w-full max-w-full mx-auto px-4 md:px-6 lg:px-8 ${(isHover || isScrollTop) ? 'text-[#121212] bg-white' : 'text-[#FBFBFB]'} group ${isClick && 'bg-white'} transition-all duration-500 ease-out`}
+            <div className={`z-50 fixed w-full max-w-full mx-auto px-4 md:px-6 lg:px-8 ${(isHover || isScrollTop || isClick) ? 'text-[#121212] bg-white' : 'text-[#FBFBFB]'} transition-all duration-500 ease-out`}
                 onMouseEnter={() => setIsHover(true)} 
                 onMouseLeave={() => setIsHover(false)}
             >
@@ -83,7 +81,7 @@ const Navbar: React.FC = () => {
                                 <Link href="#">
                                     Collections
                                 </Link>
-                                <div className="hidden w-full px-12 h-[50vh] absolute top-20 left-0 bg-white group-hover/collections:block hover:block">
+                                <div className="hidden w-full px-12 h-[20vh] absolute top-20 left-0 bg-white group-hover/collections:block hover:block">
                                     <ul className="">
                                         <li>
                                             <Link className="" href="/collections/first-collection">
@@ -97,7 +95,7 @@ const Navbar: React.FC = () => {
                                 <Link href="#">
                                     About
                                 </Link>
-                                <div className="hidden w-full px-12 h-[50vh] absolute top-20 left-0 bg-white group-hover/about:block hover:block">
+                                <div className="hidden w-full px-12 h-[20vh] absolute top-20 left-0 bg-white group-hover/about:block hover:block">
                                     <ul className="">
                                         <li>
                                             <Link className="" href="">
