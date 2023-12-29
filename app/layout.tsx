@@ -4,6 +4,7 @@ import './globals.css'
 import ClientOnly from './components/ClientOnly'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
+import { createContext, useState } from 'react'
 
 
 const marcellus = Marcellus({
@@ -24,13 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${marcellus.className} flex flex-col min-h-screen`}>
-        <ClientOnly>
-          <Navbar />
-          <div className='flex-grow pb-10'>
-            {children}
-          </div>
-          <Footer />
-        </ClientOnly>
+          <ClientOnly>
+            <Navbar />
+            <div className='flex-grow pb-10'>
+              {children}
+            </div>
+            <Footer />
+          </ClientOnly>
       </body>
     </html>
   )

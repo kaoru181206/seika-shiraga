@@ -3,9 +3,10 @@
 import ThumbImage from "./ThumbImage";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Navigation, Pagination } from 'swiper/modules';
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { TglNavClrContext } from '../components/ClientOnly';
 
 // Swiper styles
 import 'swiper/css';
@@ -21,6 +22,9 @@ interface ImageListProps {
 const ImageList: React.FC<ImageListProps> = ({
     images
 }) => {
+    // Navbar Context
+    const {setTglNavClr} = useContext(TglNavClrContext);
+
     const [isOpen, setIsOpen] = useState(false);
     const [lightBoxImages, setLightBoxImages] = useState<any[]>([]);
 
@@ -28,6 +32,10 @@ const ImageList: React.FC<ImageListProps> = ({
     const mainImages = imageList.filter((item) => {
         return item.id_seq === 1
     })
+
+    useEffect(() => {
+        setTglNavClr(true);
+    }, [])
 
     // LightBox Open
     const handleClickOpenImage = (index: string) => {

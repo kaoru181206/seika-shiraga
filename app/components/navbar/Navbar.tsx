@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from 'next/link'
 import Image from "next/image";
+import { TglNavClrContext } from '../ClientOnly';
 
 interface MenuState {
     forAll: boolean;
@@ -11,6 +12,9 @@ interface MenuState {
 }
 
 const Navbar: React.FC = () => {
+    // Navbar Context
+    const {tglNavClr} = useContext(TglNavClrContext);
+    
     // HambergerMenuIcon click state
     const [isClick, setIsClick] = useState(false);
 
@@ -23,6 +27,7 @@ const Navbar: React.FC = () => {
 
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [isScrollTop, setIsScrollTop] = useState(true);
+    const [highScrollPosPrev, setHighScrollPosPrev] = useState(false);
 
     // Hover state
     const [isHover, setIsHover] = useState(false);
@@ -31,6 +36,10 @@ const Navbar: React.FC = () => {
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollPos = window.scrollY;
+            if (currentScrollPos > prevScrollPos) {
+
+            }
+            setHighScrollPosPrev(currentScrollPos < prevScrollPos);
             setIsScrollTop(currentScrollPos === 0);
             setPrevScrollPos(currentScrollPos);
         };
@@ -57,7 +66,7 @@ const Navbar: React.FC = () => {
 
     return (
         <nav>
-            <div className={`z-50 fixed w-full max-w-full mx-auto px-4 md:px-6 lg:px-8 ${(isHover || isScrollTop || isClick) ? 'text-[#121212] bg-white' : 'text-[#FBFBFB]'} transition-all duration-500 ease-out`}
+            <div className={`z-50 fixed w-full max-w-full mx-auto px-4 md:px-6 lg:px-8 ${((highScrollPosPrev && !isScrollTop) || isClick || isHover || tglNavClr) ? 'text-[#121212] bg-white' : 'text-[#FBFBFB]'} transition-all duration-500 ease-out`}
                 onMouseEnter={() => setIsHover(true)} 
                 onMouseLeave={() => setIsHover(false)}
             >
@@ -69,9 +78,9 @@ const Navbar: React.FC = () => {
                             className="inline-flex flex-col h-10 w-10 rounded justify-center items-center"
                             onClick={toggleHmabMn}
                         >
-                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${(isClick || isHover || isScrollTop) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "rotate-45 translate-y-[9px]"}`}/>
-                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${(isClick || isHover || isScrollTop) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "opacity-0"}`}/>
-                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${(isClick ||  isHover || isScrollTop) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "-rotate-45 -translate-y-[9px]"}`}
+                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || isClick || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "rotate-45 translate-y-[9px]"}`}/>
+                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || isClick || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "opacity-0"}`}/>
+                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || isClick || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "-rotate-45 -translate-y-[9px]"}`}
                             />
                         </button>
                     </div>
@@ -112,7 +121,7 @@ const Navbar: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={`items-center mr-30 justify-center group-hover:flex-grow group-hover:flex ${(isClick || isHover || isScrollTop) ? 'flex-grow flex' : 'hidden'}`}>
+                    <div className={`items-center mr-30 justify-center group-hover:flex-grow group-hover:flex ${((highScrollPosPrev && !isScrollTop) || isClick || isHover || tglNavClr) ? 'flex-grow flex' : 'hidden'}`}>
                         <Link href="/">
                             <Image className="cursor-pointer" height={56} width={144} src="/assets/seika-shiraga-logo.png" alt="seika-shiraga-logo" />
                         </Link>
