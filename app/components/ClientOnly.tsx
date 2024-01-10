@@ -11,9 +11,19 @@ interface TglNavClrContextType {
     setTglNavClr: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+interface TglSideBarContextType {
+    tglSidebar: boolean;
+    setTglSidebar: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export const TglNavClrContext = createContext<TglNavClrContextType>({
     tglNavClr: false,
     setTglNavClr: () => { },
+});
+
+export const TglSidebarContext = createContext<TglSideBarContextType>({
+    tglSidebar: false,
+    setTglSidebar: () => { },
 });
 
 const ClientOnly: React.FC<ClientOnlyProps> = ({
@@ -21,6 +31,7 @@ const ClientOnly: React.FC<ClientOnlyProps> = ({
 }) => {
     const [hasMounted, setHasMounted] = useState(false);
     const [tglNavClr, setTglNavClr] = useState(false);
+    const [tglSidebar, setTglSidebar] = useState(false);
 
     useEffect(() => {
         setHasMounted(true);
@@ -33,7 +44,9 @@ const ClientOnly: React.FC<ClientOnlyProps> = ({
 
     return (
         <TglNavClrContext.Provider value={{ tglNavClr, setTglNavClr }}>
-            {children}
+            <TglSidebarContext.Provider value={{ tglSidebar, setTglSidebar }}>
+                {children}
+            </TglSidebarContext.Provider>
         </TglNavClrContext.Provider>
     )
 }
