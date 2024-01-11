@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import Link from 'next/link'
 import Image from "next/image";
-import { TglNavClrContext } from '../ClientOnly';
+import { TglNavClrContext, TglSidebarContext } from '../ClientOnly';
 
 interface MenuState {
     forAll: boolean;
@@ -13,10 +13,10 @@ interface MenuState {
 
 const Navbar: React.FC = () => {
     // Navbar Context
-    const {tglNavClr} = useContext(TglNavClrContext);
-    
+    const { tglNavClr } = useContext(TglNavClrContext);
+
     // HambergerMenuIcon click state
-    const [isClick, setIsClick] = useState(false);
+    const { tglSidebar, setTglSidebar } = useContext(TglSidebarContext);
 
     // HambergerMenuList click state
     const [isClickMenu, setIsClickMenu] = useState<MenuState>({
@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
 
     // HambergerMenu 表示・非表示
     const toggleHmabMn = (): void => {
-        setIsClick(!isClick);
+        setTglSidebar(!tglSidebar);
     }
 
     // HambergerMenuItem 表示・非表示
@@ -66,8 +66,8 @@ const Navbar: React.FC = () => {
 
     return (
         <nav>
-            <div className={`z-50 fixed w-full max-w-full mx-auto px-4 md:px-6 lg:px-8 ${((highScrollPosPrev && !isScrollTop) || isClick || isHover || tglNavClr) ? 'text-[#121212] bg-white' : 'text-[#FBFBFB]'} transition-all duration-500 ease-out`}
-                onMouseEnter={() => setIsHover(true)} 
+            <div className={`z-50 fixed w-full max-w-full mx-auto px-4 md:px-6 lg:px-8 text-sm font-medium ${((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr) ? 'text-[#121212] bg-white' : 'text-[#FBFBFB]'} transition-all duration-500 ease-out`}
+                onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
             >
                 {/* Desktop Menu */}
@@ -78,15 +78,15 @@ const Navbar: React.FC = () => {
                             className="inline-flex flex-col h-10 w-10 rounded justify-center items-center"
                             onClick={toggleHmabMn}
                         >
-                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || isClick || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "rotate-45 translate-y-[9px]"}`}/>
-                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || isClick || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "opacity-0"}`}/>
-                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || isClick || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${isClick && "-rotate-45 -translate-y-[9px]"}`}
+                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "rotate-45 translate-y-[9px]"}`} />
+                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "opacity-0"}`} />
+                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "-rotate-45 -translate-y-[9px]"}`}
                             />
                         </button>
                     </div>
                     <div className="hidden lg:block">
                         <div className="ml-4 flex items-center">
-                            <div className="group/collections px-4 py-7">
+                            <div className="group/collections px-4 py-[30px]">
                                 <Link href="#">
                                     Collections
                                 </Link>
@@ -100,7 +100,7 @@ const Navbar: React.FC = () => {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="group/about px-4 py-7">
+                            <div className="group/about px-4 py-[30px]">
                                 <Link href="#">
                                     About
                                 </Link>
@@ -114,19 +114,19 @@ const Navbar: React.FC = () => {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="px-4 py-7">
+                            <div className="px-4 py-[30px]">
                                 <Link href="/contact">
                                     Contact
                                 </Link>
                             </div>
                         </div>
                     </div>
-                    <div className={`items-center mr-30 justify-center group-hover:flex-grow group-hover:flex ${((highScrollPosPrev && !isScrollTop) || isClick || isHover || tglNavClr) ? 'flex-grow flex' : 'hidden'}`}>
+                    <div className={`items-center mr-30 justify-center group-hover:flex-grow group-hover:flex ${((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr) ? 'flex-grow flex' : 'hidden'}`}>
                         <Link href="/">
-                            <Image className="cursor-pointer" height={56} width={144} src="/assets/seika-shiraga-logo.png" alt="seika-shiraga-logo" />
+                            <Image className="cursor-pointer" height={530} width={172} src="/assets/seika-shiraga-logo-nav.png" alt="seika-shiraga-logo-nav" />
                         </Link>
                     </div>
-                    <div className="hidden pr-4 pl-40 py-7 mr-4 lg:block">
+                    <div className="hidden pr-4 pl-40 py-[30px] mr-4 lg:block">
                         <div className="items-center space-x-4">
                             <Link href="https://seikashiraga.official.ec/">
                                 Online Store
@@ -136,15 +136,15 @@ const Navbar: React.FC = () => {
                 </div>
             </div>
             {/* Mobile Menu */}
-            <div className={`fixed top-20 left-0 text-xl w-5/6 md:w-1/2 h-screen lg:hidden bg-white z-10 transition-all duration-500 ease-in ${isClick ? 'left-0' : 'left-[-100%]'}`}>
-                <div className="">
+            <div className={`fixed top-20 left-0 text-[15px] w-5/6 md:w-1/2 h-screen lg:hidden bg-white z-10 transition-all duration-500 ease-in ${tglSidebar ? 'left-0' : 'left-[-100%]'}`}>
+                <div>
                     <details className="text-left cursor-pointer">
-                        <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="collections" 
-                                onClick={() => toggleMenu("collections")}
+                        <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="collections"
+                            onClick={() => toggleMenu("collections")}
                         >
                             COLLECTIONS {isClickMenu.collections ? "-" : "+"}
                         </summary>
-                        <ul className="text-lg py-3 px-6 hover:bg-slate-50">
+                        <ul className="py-3 px-6 hover:bg-slate-50">
                             <li>
                                 <Link className="block" href="/collections/first-collection">
                                     First Collection
@@ -153,30 +153,30 @@ const Navbar: React.FC = () => {
                         </ul>
                     </details>
                     <details className="text-left cursor-pointer">
-                        <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="about" 
-                                onClick={() => toggleMenu("about")}
+                        <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="about"
+                            onClick={() => toggleMenu("about")}
                         >
                             ABOUT {isClickMenu.about ? "-" : "+"}
                         </summary>
-                        <ul className="text-lg py-3 px-6 hover:bg-slate-50">
+                        <ul className="py-3 px-6 hover:bg-slate-50">
                             <li>
-                                <Link className="block" href="">
+                                <Link className="block" href="/about">
                                     About Seika Shiraga
                                 </Link>
                             </li>
                         </ul>
                     </details>
-                    <Link className="block py-3 px-6 hover:bg-slate-50" href="/contact" 
-                            onClick={() => setIsClick(false)}
+                    <Link className="block py-3 px-6 hover:bg-slate-50" href="/contact"
+                        onClick={() => setTglSidebar(false)}
                     >
                         CONTACT
                     </Link>
                     <Link className="block py-3 px-6 hover:bg-slate-50" href="https://seikashiraga.official.ec/">
                         ONLINE STORE
                     </Link>
-                    {/* <Link className="block py-3 px-6 hover:bg-slate-50" href="https://instagram.com/seika_shiraga.official?igshid=OGQ5ZDc2ODk2ZA==">
-                            INSTAGRAM
-                        </Link> */}
+                    <Link className="block py-3 px-6 hover:bg-slate-50" href="https://instagram.com/seika_shiraga.official?igshid=OGQ5ZDc2ODk2ZA==">
+                        INSTAGRAM
+                    </Link>
                 </div>
             </div>
         </nav>
