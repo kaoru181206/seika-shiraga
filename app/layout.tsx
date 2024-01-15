@@ -4,7 +4,6 @@ import './globals.css'
 import ClientOnly from './components/ClientOnly'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
-import { createContext, useState } from 'react'
 
 
 const marcellus = Marcellus({

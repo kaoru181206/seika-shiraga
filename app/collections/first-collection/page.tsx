@@ -5,10 +5,10 @@ export const revalidate = 0
 
 export default async function FirstCollection() {
 
-    const { data, error } = await supabase.from("collection_image").select("*").order("id");
+    const { data, error } = await supabase.from("collection_image").select("*").order("id, id_seq");
 
     if (error) {
-        console.log(error)
+        return <p>Error!!!!</p>
     }
     
     return (
