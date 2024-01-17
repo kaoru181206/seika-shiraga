@@ -3,14 +3,20 @@ import supabase from "@/app/utils/supabase";
 
 export const revalidate = 0
 
+async function getData() {
+    const res = await supabase.from("collection_image").select("*").order("id, id_seq");
+
+    if (res.error) {
+        throw new Error('Failed to fetch data');
+    }
+
+    return res.data;
+}
+
 export default async function FirstCollection() {
 
-    const { data, error } = await supabase.from("collection_image").select("*").order("id, id_seq");
+    const data = await getData();
 
-    if (error) {
-        return <p>Error!!!!</p>
-    }
-    
     return (
         <ImageList images={data || []}/>
     )
