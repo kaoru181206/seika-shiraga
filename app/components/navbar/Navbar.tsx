@@ -107,7 +107,7 @@ const Navbar: React.FC = () => {
                                 <div className="hidden w-full px-12 h-[20vh] absolute top-20 left-0 bg-white group-hover/about:block hover:block">
                                     <ul className="">
                                         <li>
-                                            <Link className="" href="">
+                                            <Link className="" href="/about/about-seika-shiraga">
                                                 About Seika Shiraga
                                             </Link>
                                         </li>
