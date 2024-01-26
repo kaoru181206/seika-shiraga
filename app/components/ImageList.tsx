@@ -7,6 +7,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { TglNavClrContext, TglSidebarContext } from '../components/ClientOnly';
+import PageWrapper from "./PageWrapper";
+import { motion } from "framer-motion";
 
 // Swiper styles
 import 'swiper/css';
@@ -18,6 +20,30 @@ import Image from "next/image";
 interface ImageListProps {
     images: any[]
 }
+
+const variants = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.3,
+        },
+    },
+};
+
+const variantsImages = {
+    hidden: {
+        opacity: 0,
+        y: 30,
+    },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 1,
+        },
+    },
+};
 
 const ImageList: React.FC<ImageListProps> = ({
     images
@@ -62,29 +88,37 @@ const ImageList: React.FC<ImageListProps> = ({
 
     return (
         <>
-            <div className="w-full min-h-screen text-[#121212] pt-28">
-                <div className="flex items-center justify-between px-[5%] mb-8">
-                    <h2 className="text-sm md:text-base">COLLECTION</h2>
-                    <h3 className="text-xs md:text-sm">FIRST COLLECTION</h3>
+            <PageWrapper>
+                <div className="w-full min-h-screen text-[#121212] pt-28">
+                    <div className="flex items-center justify-between px-[5%] mb-8">
+                        <h2 className="text-sm md:text-base">COLLECTION</h2>
+                        <h3 className="text-xs md:text-sm">FIRST COLLECTION</h3>
+                    </div>
+                    {/* Image Grid */}
+                    <motion.div
+                        className="grid px-1 gap-1 grid-cols-2 lg:grid-cols-3 lg:px-2 lg:gap-2"
+                        variants={variants}
+                        initial="hidden"
+                        animate="show"
+                    >
+                        {mainImages?.map((mainImage) => (
+                            <ThumbImage
+                                key={mainImage.id}
+                                id={mainImage.id}
+                                src={mainImage.imgsrc}
+                                alt={"First-Collection-" + mainImage.id + "-" + mainImage.id_seq}
+                                variants={variantsImages}
+                                onClick={() => handleClickOpenImage(mainImage.id)}
+                            />
+                        ))}
+                    </motion.div>
                 </div>
-                {/* Image Grid */}
-                <div className="grid px-1 gap-1 grid-cols-2 lg:grid-cols-3 lg:px-2 lg:gap-2">
-                    {mainImages?.map((mainImage) => (
-                        <ThumbImage
-                            key={mainImage.id}
-                            id={mainImage.id}
-                            src={mainImage.imgsrc}
-                            alt={"First-Collection-" + mainImage.id + "-" + mainImage.id_seq}
-                            onClick={() => handleClickOpenImage(mainImage.id)}
-                        />
-                    ))}
-                </div>
+            </PageWrapper>
 
-            </div>
             {/* LightBox */}
             <div className={`fixed z-50 inset-0 w-full h-full bg-white bg-opacity-70 flex items-center justify-center ${isOpen ? 'opacity-100' : 'opacity-0 invisible'} transition-all duration-700 ease-out`}>
                 <button className="z-50 absolute top-5 right-5 opacity-40" onClick={handleCloseLightBox}>
-                    <IoClose size={25}/>
+                    <IoClose size={25} />
                 </button>
                 <Swiper
                     className="imagesSwiper w-full md:w-3/4 lg:w-2/3 h-[95%] flex items-center justify-center"
