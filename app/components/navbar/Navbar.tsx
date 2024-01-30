@@ -64,71 +64,225 @@ const Navbar: React.FC = () => {
         }));
     };
 
+    const tglNav = ((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr);
+
     return (
         <nav>
-            <div className={`z-50 fixed w-full max-w-full mx-auto px-4 md:px-6 lg:px-8 text-sm font-medium ${((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr) ? 'text-[#121212] bg-white' : 'text-[#FBFBFB]'} transition-all duration-500 ease-out`}
+            <div
+                className={`
+                    z-50 
+                    fixed 
+                    w-full 
+                    max-w-full 
+                    mx-auto 
+                    pl-4
+                    pr-14
+                    md:pl-6
+                    md:pr-16 
+                    lg:px-8 
+                    text-sm 
+                    font-medium 
+                    ${tglNav ? 'text-[#121212BF] bg-white' : 'text-[#FBFBFB]'} 
+                    transition-all 
+                    duration-500 
+                    ease-out
+                `}
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
             >
                 {/* Desktop Menu */}
-                <div className="flex items-center justify-between h-20">
-                    <div className="lg:hidden flex items-center">
-                        {/* Mobile Menu Hamberger */}
+                <div
+                    className="
+                        flex 
+                        items-center 
+                        justify-between 
+                        h-20
+                    "
+                >
+                    <div
+                        className="
+                            flex 
+                            items-center
+                            lg:hidden
+                        "
+                    >
+                        {/* Hamberger Menu Button */}
                         <button
-                            className="inline-flex flex-col h-10 w-10 rounded justify-center items-center"
+                            className="
+                                inline-flex 
+                                flex-col 
+                                h-10 
+                                w-10 
+                                rounded 
+                                justify-center 
+                                items-center
+                            "
                             onClick={toggleHmabMn}
                         >
-                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "rotate-45 translate-y-[9px]"}`} />
-                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "opacity-0"}`} />
-                            <div className={`h-[1px] w-5 my-1 transition ease transform duration-500 ${((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr) ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "-rotate-45 -translate-y-[9px]"}`}
+                            <div
+                                className={`
+                                    h-[1px] 
+                                    w-5 my-1 
+                                    transition 
+                                    ease 
+                                    transform 
+                                    duration-500 
+                                    ${tglNav ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "rotate-45 translate-y-[9px]"}
+                                `}
+                            />
+                            <div
+                                className={`
+                                    h-[1px] 
+                                    w-5 
+                                    my-1 
+                                    transition 
+                                    ease 
+                                    transform 
+                                    duration-500 
+                                    ${tglNav ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "opacity-0"}
+                                `}
+                            />
+                            <div
+                                className={`
+                                    h-[1px] 
+                                    w-5 
+                                    my-1 
+                                    transition 
+                                    ease 
+                                    transform 
+                                    duration-500 
+                                    ${tglNav ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "-rotate-45 -translate-y-[9px]"}
+                                `}
                             />
                         </button>
                     </div>
-                    <div className="hidden lg:block">
-                        <div className="ml-4 flex items-center">
-                            <div className="group/collections px-4 py-[30px]">
-                                <Link href="#">
+                    <div
+                        className="
+                            hidden 
+                            lg:block
+                        "
+                    >
+                        <div
+                            className="
+                                ml-4 
+                                flex 
+                                items-center
+                            "
+                        >
+                            <div
+                                className="
+                                    group/collections 
+                                    px-4 
+                                    py-[30px]
+                                "
+                            >
+                                <Link className="hover:text-[#121212]" href="#">
                                     Collections
                                 </Link>
-                                <div className="hidden w-full px-12 h-[20vh] absolute top-20 left-0 bg-white group-hover/collections:block hover:block">
+                                <div
+                                    className="
+                                        hidden 
+                                        w-full 
+                                        px-12 
+                                        h-[20vh] 
+                                        absolute 
+                                        top-20 
+                                        left-0 
+                                        bg-white 
+                                        group-hover/collections:block 
+                                        hover:block
+                                    "
+                                >
                                     <ul className="">
                                         <li>
-                                            <Link className="" href="/collections/first-collection">
+                                            <Link className="hover:text-[#121212]" href="/collections/first-collection">
                                                 First Collection
                                             </Link>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div className="group/about px-4 py-[30px]">
-                                <Link href="#">
+                            <div
+                                className="
+                                    group/about 
+                                    px-4 
+                                    py-[30px]
+                                "
+                            >
+                                <Link className="hover:text-[#121212]" href="#">
                                     About
                                 </Link>
-                                <div className="hidden w-full px-12 h-[20vh] absolute top-20 left-0 bg-white group-hover/about:block hover:block">
-                                    <ul className="">
+                                <div
+                                    className="
+                                        hidden 
+                                        w-full 
+                                        px-12 
+                                        h-[20vh] 
+                                        absolute 
+                                        top-20 
+                                        left-0 
+                                        bg-white 
+                                        group-hover/about:block 
+                                        hover:block
+                                    "
+                                >
+                                    <ul>
                                         <li>
-                                            <Link className="" href="/about/about-seika-shiraga">
+                                            <Link className="hover:text-[#121212]" href="/about/about-seika-shiraga">
                                                 About Seika Shiraga
                                             </Link>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div className="px-4 py-[30px]">
-                                <Link href="/contact">
+                            <div 
+                                className="
+                                    px-4 
+                                    py-[30px]
+                                "
+                            >
+                                <Link className="hover:text-[#121212]" href="/contact">
                                     Contact
                                 </Link>
                             </div>
                         </div>
                     </div>
-                    <div className={`items-center mr-30 justify-center group-hover:flex-grow group-hover:flex ${((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr) ? 'flex-grow flex' : 'hidden'}`}>
+                    <div 
+                        className={`
+                            items-center 
+                            mr-30 
+                            justify-center 
+                            group-hover:flex-grow 
+                            group-hover:flex 
+                            ${tglNav ? 'flex-grow flex' : 'hidden'}
+                        `}
+                    >
                         <Link href="/">
-                            <Image className="cursor-pointer" height={530} width={172} src="/assets/seika-shiraga-logo-nav.png" alt="seika-shiraga-logo-nav" />
+                            <Image 
+                                className="cursor-pointer" 
+                                height={530} 
+                                width={172} 
+                                src="/assets/seika-shiraga-logo-nav.png" alt="seika-shiraga-logo-nav" 
+                            />
                         </Link>
                     </div>
-                    <div className="hidden pr-4 pl-40 py-[30px] mr-4 lg:block">
-                        <div className="items-center space-x-4">
-                            <Link href="https://seikashiraga.official.ec/">
+                    <div 
+                        className="
+                            hidden 
+                            pr-4 
+                            pl-40 
+                            py-[30px] 
+                            mr-4 
+                            lg:block
+                        "
+                    >
+                        <div 
+                            className="
+                                items-center 
+                                space-x-4
+                            "
+                        >
+                            <Link className="hover:text-[#121212]" href="https://seikashiraga.official.ec/">
                                 Online Store
                             </Link>
                         </div>
@@ -136,15 +290,51 @@ const Navbar: React.FC = () => {
                 </div>
             </div>
             {/* Mobile Menu */}
-            <div className={`fixed top-20 left-0 text-[15px] w-5/6 md:w-1/2 h-screen lg:hidden bg-white z-10 transition-all duration-500 ease-in ${tglSidebar ? 'left-0' : 'left-[-100%]'}`}>
+            <div 
+                className={`
+                    z-10
+                    fixed 
+                    top-20 
+                    left-0 
+                    text-[#121212] 
+                    text-[15px] 
+                    w-5/6 
+                    h-screen 
+                    bg-white
+                    md:w-1/2 
+                    lg:hidden 
+                    transition-all 
+                    duration-500 
+                    ease-in 
+                    ${tglSidebar ? 'left-0' : 'left-[-100%]'}
+                `}
+            >
                 <div>
-                    <details className="text-left cursor-pointer">
-                        <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="collections"
+                    <details 
+                        className="
+                            text-left 
+                            cursor-pointer
+                        "
+                    >
+                        <summary 
+                            className="
+                                py-3 
+                                px-6 
+                                cursor-pointer 
+                                list-none 
+                                hover:bg-slate-50"
+                            id="collections"
                             onClick={() => toggleMenu("collections")}
                         >
                             COLLECTIONS {isClickMenu.collections ? "-" : "+"}
                         </summary>
-                        <ul className="py-3 px-6 hover:bg-slate-50">
+                        <ul 
+                            className="
+                                py-3 
+                                px-6 
+                                hover:bg-slate-50
+                            "
+                        >
                             <li>
                                 <Link className="block" href="/collections/first-collection">
                                     First Collection
@@ -152,29 +342,71 @@ const Navbar: React.FC = () => {
                             </li>
                         </ul>
                     </details>
-                    <details className="text-left cursor-pointer">
-                        <summary className="py-3 px-6 cursor-pointer list-none hover:bg-slate-50" id="about"
+                    <details 
+                        className="
+                            text-left 
+                            cursor-pointer
+                        "
+                    >
+                        <summary 
+                            className="
+                                py-3 
+                                px-6 
+                                cursor-pointer 
+                                list-none 
+                                hover:bg-slate-50
+                            " 
+                            id="about"
                             onClick={() => toggleMenu("about")}
                         >
                             ABOUT {isClickMenu.about ? "-" : "+"}
                         </summary>
-                        <ul className="py-3 px-6 hover:bg-slate-50">
+                        <ul 
+                            className="
+                                py-3 
+                                px-6 
+                                hover:bg-slate-50
+                            "
+                        >
                             <li>
-                                <Link className="block" href="/about">
+                                <Link className="" href="/about/about-seika-shiraga">
                                     About Seika Shiraga
                                 </Link>
                             </li>
                         </ul>
                     </details>
-                    <Link className="block py-3 px-6 hover:bg-slate-50" href="/contact"
+                    <Link 
+                        className="
+                            block 
+                            py-3 
+                            px-6 
+                            hover:bg-slate-50
+                        " 
+                        href="/contact"
                         onClick={() => setTglSidebar(false)}
                     >
                         CONTACT
                     </Link>
-                    <Link className="block py-3 px-6 hover:bg-slate-50" href="https://seikashiraga.official.ec/">
+                    <Link 
+                        className="
+                            block 
+                            py-3 
+                            px-6 
+                            hover:bg-slate-50
+                        " 
+                        href="https://seikashiraga.official.ec/"
+                    >
                         ONLINE STORE
                     </Link>
-                    <Link className="block py-3 px-6 hover:bg-slate-50" href="https://instagram.com/seika_shiraga.official?igshid=OGQ5ZDc2ODk2ZA==">
+                    <Link 
+                        className="
+                            block 
+                            py-3 
+                            px-6 
+                            hover:bg-slate-50
+                        " 
+                        href="https://instagram.com/seika_shiraga.official?igshid=OGQ5ZDc2ODk2ZA=="
+                    >
                         INSTAGRAM
                     </Link>
                 </div>

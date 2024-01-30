@@ -89,14 +89,37 @@ const ImageList: React.FC<ImageListProps> = ({
     return (
         <>
             <PageWrapper>
-                <div className="w-full min-h-screen text-[#121212] pt-28">
-                    <div className="flex items-center justify-between px-[5%] mb-8">
+                <div 
+                    className="
+                        w-full 
+                        min-h-screen 
+                        text-[#121212] 
+                        pt-28
+                    "
+                >
+                    <div 
+                        className="
+                            flex 
+                            items-center 
+                            justify-between 
+                            px-[5%] 
+                            mb-8
+                        "
+                    >
                         <h2 className="text-sm md:text-base">COLLECTION</h2>
                         <h3 className="text-xs md:text-sm">FIRST COLLECTION</h3>
                     </div>
                     {/* Image Grid */}
                     <motion.div
-                        className="grid px-1 gap-1 grid-cols-2 lg:grid-cols-3 lg:px-2 lg:gap-2"
+                        className="
+                            grid 
+                            px-1 
+                            gap-1 
+                            grid-cols-2 
+                            lg:grid-cols-3 
+                            lg:px-2 
+                            lg:gap-2
+                        "
                         variants={variants}
                         initial="hidden"
                         animate="show"
@@ -116,12 +139,46 @@ const ImageList: React.FC<ImageListProps> = ({
             </PageWrapper>
 
             {/* LightBox */}
-            <div className={`fixed z-50 inset-0 w-full h-full bg-white bg-opacity-70 flex items-center justify-center ${isOpen ? 'opacity-100' : 'opacity-0 invisible'} transition-all duration-700 ease-out`}>
-                <button className="z-50 absolute top-5 right-5 opacity-40" onClick={handleCloseLightBox}>
+            <div 
+                className={`
+                    flex
+                    fixed 
+                    z-50 
+                    inset-0 
+                    w-full 
+                    h-full 
+                    bg-white 
+                    bg-opacity-70 
+                    items-center 
+                    justify-center 
+                    ${isOpen ? 'opacity-100' : 'opacity-0 invisible'} 
+                    transition-all 
+                    duration-700 
+                    ease-out
+                `}
+            >
+                <button 
+                    className="
+                        z-50 
+                        absolute 
+                        top-5 
+                        right-5 
+                        opacity-40
+                    " 
+                    onClick={handleCloseLightBox}>
                     <IoClose size={25} />
                 </button>
                 <Swiper
-                    className="imagesSwiper w-full md:w-3/4 lg:w-2/3 h-[95%] flex items-center justify-center"
+                    className="
+                        flex
+                        imagesSwiper 
+                        w-full 
+                        h-[95%] 
+                        items-center 
+                        justify-center
+                        md:w-3/4 
+                        lg:w-2/3
+                    "
                     speed={900}
                     spaceBetween={30}
                     effect={'fade'}
@@ -139,7 +196,13 @@ const ImageList: React.FC<ImageListProps> = ({
                     {
                         lightBoxImages.map((image) => (
                             <SwiperSlide key={image.id_seq}>
-                                <div className="flex items-center justify-center">
+                                <div 
+                                    className="
+                                        flex 
+                                        items-center 
+                                        justify-center
+                                    "
+                                >
                                     <Image
                                         src={image.imgsrc}
                                         alt={"First-Collection-" + image.id + "-" + image.id_seq}
@@ -150,11 +213,33 @@ const ImageList: React.FC<ImageListProps> = ({
                             </SwiperSlide>
                         ))
                     }
-                    <div className="z-50 absolute inset-0 flex items-center justify-between p-4">
-                        <div className="button-prev-slide cursor-pointer opacity-40">
+                    <div 
+                        className="
+                            flex
+                            z-50 
+                            absolute 
+                            inset-0 
+                            items-center 
+                            justify-between 
+                            p-4
+                        "
+                    >
+                        <div 
+                            className="
+                                button-prev-slide 
+                                cursor-pointer 
+                                opacity-40
+                            "
+                        >
                             <FaChevronLeft size={25} />
                         </div>
-                        <div className="button-next-slide cursor-pointer opacity-40">
+                        <div 
+                            className="
+                                button-next-slide 
+                                cursor-pointer 
+                                opacity-40
+                            "
+                        >
                             <FaChevronRight size={25} />
                         </div>
                     </div>
