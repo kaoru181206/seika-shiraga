@@ -235,7 +235,7 @@ const Navbar: React.FC = () => {
                                     </ul>
                                 </div>
                             </div>
-                            <div 
+                            <div
                                 className="
                                     px-4 
                                     py-[30px]
@@ -247,7 +247,7 @@ const Navbar: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div 
+                    <div
                         className={`
                             items-center 
                             mr-30 
@@ -258,15 +258,15 @@ const Navbar: React.FC = () => {
                         `}
                     >
                         <Link href="/">
-                            <Image 
-                                className="cursor-pointer" 
-                                height={530} 
-                                width={172} 
-                                src="/assets/seika-shiraga-logo-nav.png" alt="seika-shiraga-logo-nav" 
+                            <Image
+                                className="cursor-pointer"
+                                height={530}
+                                width={172}
+                                src="/assets/seika-shiraga-logo-nav.png" alt="seika-shiraga-logo-nav"
                             />
                         </Link>
                     </div>
-                    <div 
+                    <div
                         className="
                             hidden 
                             pr-4 
@@ -276,7 +276,7 @@ const Navbar: React.FC = () => {
                             lg:block
                         "
                     >
-                        <div 
+                        <div
                             className="
                                 items-center 
                                 space-x-4
@@ -293,124 +293,138 @@ const Navbar: React.FC = () => {
             <div 
                 className={`
                     z-10
+                    w-full 
                     fixed 
                     top-20 
                     left-0 
-                    text-[#121212] 
-                    text-[15px] 
-                    w-5/6 
-                    h-screen 
-                    bg-white
-                    md:w-1/2 
-                    lg:hidden 
-                    transition-all 
-                    duration-500 
-                    ease-in 
-                    ${tglSidebar ? 'left-0' : 'left-[-100%]'}
+                    h-screen
+                    lg:invisible
+                    ${tglSidebar ? "bg-neutral-800/70" : "invisible"}
                 `}
             >
-                <div>
-                    <details 
-                        className="
+                <div
+                    className={`
+                        z-10
+                        fixed 
+                        top-20 
+                        left-0 
+                        text-[#121212] 
+                        text-[15px] 
+                        w-5/6 
+                        h-screen 
+                      bg-white
+                        md:w-1/2 
+                        lg:invisible 
+                        transition-all 
+                        duration-500 
+                        ease-in 
+                        ${tglSidebar ? 'left-0' : 'left-[-100%]'}
+                    `}
+                >
+                    <div>
+                        <details
+                            className="
                             text-left 
                             cursor-pointer
                         "
-                    >
-                        <summary 
-                            className="
+                        >
+                            <summary
+                                className="
                                 py-3 
                                 px-6 
                                 cursor-pointer 
                                 list-none 
                                 hover:bg-slate-50"
-                            id="collections"
-                            onClick={() => toggleMenu("collections")}
-                        >
-                            COLLECTIONS {isClickMenu.collections ? "-" : "+"}
-                        </summary>
-                        <ul 
-                            className="
+                                id="collections"
+                                onClick={() => toggleMenu("collections")}
+                            >
+                                COLLECTIONS {isClickMenu.collections ? "-" : "+"}
+                            </summary>
+                            <ul
+                                className="
                                 py-3 
                                 px-6 
                                 hover:bg-slate-50
                             "
-                        >
-                            <li>
-                                <Link className="block" href="/collections/first-collection">
-                                    First Collection
-                                </Link>
-                            </li>
-                        </ul>
-                    </details>
-                    <details 
-                        className="
+                            >
+                                <li>
+                                    <Link className="block" href="/collections/first-collection">
+                                        First Collection
+                                    </Link>
+                                </li>
+                            </ul>
+                        </details>
+                        <details
+                            className="
                             text-left 
                             cursor-pointer
                         "
-                    >
-                        <summary 
-                            className="
+                        >
+                            <summary
+                                className="
                                 py-3 
                                 px-6 
                                 cursor-pointer 
                                 list-none 
                                 hover:bg-slate-50
-                            " 
-                            id="about"
-                            onClick={() => toggleMenu("about")}
-                        >
-                            ABOUT {isClickMenu.about ? "-" : "+"}
-                        </summary>
-                        <ul 
-                            className="
+                            "
+                                id="about"
+                                onClick={() => toggleMenu("about")}
+                            >
+                                ABOUT {isClickMenu.about ? "-" : "+"}
+                            </summary>
+                            <ul
+                                className="
                                 py-3 
                                 px-6 
                                 hover:bg-slate-50
                             "
+                            >
+                                <li>
+                                    <Link className="" href="/about/about-seika-shiraga">
+                                        About Seika Shiraga
+                                    </Link>
+                                </li>
+                            </ul>
+                        </details>
+                        <Link
+                            className="
+                            block 
+                            py-3 
+                            px-6 
+                            hover:bg-slate-50
+                        "
+                            href="/contact"
+                            onClick={() => setTglSidebar(false)}
                         >
-                            <li>
-                                <Link className="" href="/about/about-seika-shiraga">
-                                    About Seika Shiraga
-                                </Link>
-                            </li>
-                        </ul>
-                    </details>
-                    <Link 
-                        className="
+                            CONTACT
+                        </Link>
+                        <Link
+                            className="
                             block 
                             py-3 
                             px-6 
                             hover:bg-slate-50
-                        " 
-                        href="/contact"
-                        onClick={() => setTglSidebar(false)}
-                    >
-                        CONTACT
-                    </Link>
-                    <Link 
-                        className="
+                        "
+                            href="https://seikashiraga.official.ec/"
+                        >
+                            ONLINE STORE
+                        </Link>
+                        <Link
+                            className="
                             block 
                             py-3 
                             px-6 
                             hover:bg-slate-50
-                        " 
-                        href="https://seikashiraga.official.ec/"
-                    >
-                        ONLINE STORE
-                    </Link>
-                    <Link 
-                        className="
-                            block 
-                            py-3 
-                            px-6 
-                            hover:bg-slate-50
-                        " 
-                        href="https://instagram.com/seika_shiraga.official?igshid=OGQ5ZDc2ODk2ZA=="
-                    >
-                        INSTAGRAM
-                    </Link>
+                        "
+                            href="https://instagram.com/seika_shiraga.official?igshid=OGQ5ZDc2ODk2ZA=="
+                        >
+                            INSTAGRAM
+                        </Link>
+                    </div>
                 </div>
             </div>
+
         </nav>
     )
 }
