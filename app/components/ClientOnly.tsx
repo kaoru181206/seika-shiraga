@@ -41,6 +41,16 @@ const ClientOnly: React.FC<ClientOnlyProps> = ({
         return null;
     }
 
+    // scroll表示・非表示
+    const body = document.getElementById("body") || null;
+    if (body != null) {
+        body.classList.remove("overflow-visible", "overflow-hidden", "lg:overflow-auto");
+        if (tglSidebar) {
+            body.classList.add("overflow-hidden", "lg:overflow-visible");
+        } else {
+            body.classList.add("overflow-visible");
+        }
+    }
 
     return (
         <TglNavClrContext.Provider value={{ tglNavClr, setTglNavClr }}>

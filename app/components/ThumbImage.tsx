@@ -25,15 +25,39 @@ const ThumbImage: React.FC<ThumbImageProps> = ({
 }) => {
 
     return (
-        <motion.div variants={variants} className="relative w-full h-full" onClick={onClick}>
+        <motion.div 
+            className="
+                relative 
+                w-full 
+                h-full
+            " 
+            variants={variants} 
+            onClick={onClick}
+        >
             <Image
                 src={src}
                 width={1000}
                 height={1500}
                 alt={alt}
-                className="hover:opacity-80 transition-all ease-linear duration-150 cursor-pointer"
+                className="
+                    hover:opacity-80 
+                    transition-all 
+                    ease-linear 
+                    duration-150 
+                    cursor-pointer
+                "
             />
-            <span className={`absolute bottom-2 right-2 text-sm text-[#FBFBFB] ${cabin.className}`}>{("000" + id).slice(-2)}</span>
+            <span 
+                className={`
+                    absolute 
+                    bottom-2 
+                    right-2 
+                    text-sm 
+                    text-[#FBFBFB] 
+                    ${cabin.className}`}
+                >
+                {("000" + id).slice(-2)}
+            </span>
         </motion.div>
     )
 }
