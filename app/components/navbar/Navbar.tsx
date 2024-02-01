@@ -184,7 +184,7 @@ const Navbar: React.FC = () => {
                                         hidden 
                                         w-full 
                                         px-12 
-                                        h-[20vh] 
+                                        h-[7vh] 
                                         absolute 
                                         top-20 
                                         left-0 
@@ -217,7 +217,7 @@ const Navbar: React.FC = () => {
                                         hidden 
                                         w-full 
                                         px-12 
-                                        h-[20vh] 
+                                        h-[7vh] 
                                         absolute 
                                         top-20 
                                         left-0 
