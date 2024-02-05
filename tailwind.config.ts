@@ -15,6 +15,9 @@ const config: Config = {
       },
     },
   },
+  feture: {
+    hoverOnlyWhenSupported: true,
+  },
   plugins: [],
 }
 export default config
