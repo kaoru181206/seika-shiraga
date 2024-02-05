@@ -8,19 +8,15 @@ import { TglNavClrContext, TglSidebarContext } from '../ClientOnly';
 const Navbar: React.FC = () => {
     // Navbar Context
     const { tglNavClr } = useContext(TglNavClrContext);
-
-    // HambergerMenuIcon click state
     const { tglSidebar, setTglSidebar } = useContext(TglSidebarContext);
 
+    // Scroll State
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [isScrollTop, setIsScrollTop] = useState(true);
     const [highScrollPosPrev, setHighScrollPosPrev] = useState(false);
 
-    // Hover state
-    const [isHover, setIsHover] = useState(false);
-
-    // スクロール時のNavbar 表示・非表示イベントの登録
     useEffect(() => {
+        // Scroll Event
         const handleScroll = () => {
             const currentScrollPos = window.scrollY;
             if (currentScrollPos > prevScrollPos) {
@@ -38,12 +34,12 @@ const Navbar: React.FC = () => {
         };
     }, [prevScrollPos]);
 
-    // HambergerMenu 表示・非表示
+    // Side Menu open・close
     const toggleHmabMn = (): void => {
         setTglSidebar(!tglSidebar);
     }
 
-    const tglNav = ((highScrollPosPrev && !isScrollTop) || tglSidebar || isHover || tglNavClr);
+    const navStyleFlg = ((highScrollPosPrev && !isScrollTop) || tglSidebar || tglNavClr);
 
     return (
         <nav>
@@ -61,15 +57,16 @@ const Navbar: React.FC = () => {
                     lg:px-8 
                     text-sm 
                     font-medium 
-                    ${tglNav ? 'text-[#121212BF] bg-white' : 'text-[#FBFBFB]'} 
+                    ${navStyleFlg ? 'text-[#121212BF] bg-white' : 'text-[#FBFBFB]'} 
+                    sm:hover:text-[#121212BF]
+                    sm:hover:bg-white
                     transition-all 
                     duration-500 
                     ease-out
+                    group
                 `}
-                onMouseEnter={() => setIsHover(true)}
-                onMouseLeave={() => setIsHover(false)}
             >
-                {/* Desktop Menu */}
+                {/* PC */}
                 <div
                     className="
                         flex 
@@ -106,7 +103,9 @@ const Navbar: React.FC = () => {
                                     ease 
                                     transform 
                                     duration-500 
-                                    ${tglNav ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "rotate-45 translate-y-[9px]"}
+                                    sm:group-hover:bg-[#121212]
+                                    ${navStyleFlg ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} 
+                                    ${tglSidebar && "rotate-45 translate-y-[9px]"}
                                 `}
                             />
                             <div
@@ -118,7 +117,9 @@ const Navbar: React.FC = () => {
                                     ease 
                                     transform 
                                     duration-500 
-                                    ${tglNav ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "opacity-0"}
+                                    sm:group-hover:bg-[#121212]
+                                    ${navStyleFlg ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} 
+                                    ${tglSidebar && "opacity-0"}
                                 `}
                             />
                             <div
@@ -130,7 +131,9 @@ const Navbar: React.FC = () => {
                                     ease 
                                     transform 
                                     duration-500 
-                                    ${tglNav ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} ${tglSidebar && "-rotate-45 -translate-y-[9px]"}
+                                    sm:group-hover:bg-[#121212]
+                                    ${navStyleFlg ? 'bg-[#121212]' : 'bg-[#FBFBFB]'} 
+                                    ${tglSidebar && "-rotate-45 -translate-y-[9px]"}
                                 `}
                             />
                         </button>
@@ -231,9 +234,9 @@ const Navbar: React.FC = () => {
                             items-center 
                             mr-30 
                             justify-center 
-                            group-hover:flex-grow 
-                            group-hover:flex 
-                            ${tglNav ? 'flex-grow flex' : 'hidden'}
+                            sm:group-hover:flex-grow 
+                            sm:group-hover:flex 
+                            ${navStyleFlg ? 'flex-grow flex' : 'hidden'}
                         `}
                     >
                         <Link href="/">
@@ -268,7 +271,7 @@ const Navbar: React.FC = () => {
                     </div>
                 </div>
             </div>
-            {/* Mobile Menu */}
+            {/* Mobile Side Menu */}
             <div 
                 className={`
                     z-10
@@ -295,7 +298,7 @@ const Navbar: React.FC = () => {
                         md:w-1/2 
                         lg:invisible 
                         transition-all 
-                        duration-500 
+                        duration-[400ms]
                         ease-in 
                         ${tglSidebar ? 'left-0' : 'left-[-100%]'}
                     `}
