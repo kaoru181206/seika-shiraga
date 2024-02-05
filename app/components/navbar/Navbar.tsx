@@ -298,7 +298,7 @@ const Navbar: React.FC = () => {
                         md:w-1/2 
                         lg:invisible 
                         transition-all 
-                        duration-500 
+                        duration-[400ms]
                         ease-in 
                         ${tglSidebar ? 'left-0' : 'left-[-100%]'}
                     `}
