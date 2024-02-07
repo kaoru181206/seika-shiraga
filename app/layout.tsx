@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SEO_DEFAULT } from './utils/seo-config'
 import { Marcellus } from 'next/font/google'
 import './globals.css'
 import ClientOnly from './components/ClientOnly'
@@ -11,10 +12,7 @@ const marcellus = Marcellus({
   subsets: ['latin']
 })
 
-export const metadata: Metadata = {
-  title: 'seika shiraga',
-  description: 'seika shiraga',
-}
+export const metadata: Metadata = SEO_DEFAULT;
 
 export default function RootLayout({
   children,
