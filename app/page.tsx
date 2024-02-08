@@ -22,21 +22,23 @@ export default function Home() {
   return (
     <PageWrapper>
       <div className="relative pb-5 md:pb-7">
-        <div className="flex h-screen">
+        <div className="flex">
           <Image
             src="/assets/top-main-left.jpg"
             width={1046}
             height={1200}
-            alt=""
-            className="w-full object-cover md:w-1/2"
+            alt="Top Main Left"
+            className="w-full h-screen object-cover object-top md:w-1/2"
+            quality={100}
             priority={true}
           />
           <Image
             src="/assets/top-main-right.jpg"
             width={1046}
             height={1200}
-            alt=""
-            className="hidden w-1/2 object-cover md:block"
+            alt="Top Main Right"
+            className="hidden w-1/2 h-screen object-cover md:block"
+            quality={100}
             priority={true}
           />
         </div>
@@ -46,12 +48,15 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.6, delay: 0.1 }}
+            viewport={{ once: true }}
           >
             <Image
               src="/assets/seika-shiraga-logo-main.png"
               width={1772}
               height={1181}
               alt="seika-shiraga-logo-main"
+              quality={100}
+              priority={true}
             />
           </motion.div>
         </div>
@@ -80,15 +85,19 @@ export default function Home() {
                   src="/assets/top-collection-left.jpg"
                   width={1444}
                   height={1926}
-                  alt=""
+                  alt="Top Collection Left"
                   className="w-full md:w-1/2"
+                  quality={100}
+                  priority={true}
                 />
                 <Image
                   src="/assets/top-collection-right.jpg"
                   width={1444}
                   height={1926}
-                  alt=""
+                  alt="Top Collection Right"
                   className="hidden w-1/2 md:block"
+                  quality={100}
+                  priority={true}
                 />
               </div>
             </motion.div>
