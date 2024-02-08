@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={`${marcellus.className} flex flex-col min-h-screen`} id="body">
+      <body className={`${marcellus.className} flex flex-col ctm-min-h-screen`} id="body">
         <ClientOnly>
           <Navbar />
           <div className='flex-grow pb-10 md:pb-20'>

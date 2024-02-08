@@ -28,7 +28,7 @@ export default function Home() {
             width={1046}
             height={1200}
             alt="Top Main Left"
-            className="w-full h-screen object-cover object-top md:w-1/2"
+            className="w-full ctm-h-screen object-cover object-top md:w-1/2"
             quality={100}
             priority={true}
           />
@@ -37,7 +37,7 @@ export default function Home() {
             width={1046}
             height={1200}
             alt="Top Main Right"
-            className="hidden w-1/2 h-screen object-cover md:block"
+            className="hidden w-1/2 ctm-h-screen object-cover md:block"
             quality={100}
             priority={true}
           />
