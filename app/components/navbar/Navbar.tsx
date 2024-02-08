@@ -279,8 +279,8 @@ const Navbar: React.FC = () => {
                     fixed 
                     top-20 
                     left-0 
-                    h-screen
-                    lg:invisible
+                    ctm-h-screen
+                    lg:hidden
                     ${tglSidebar ? "bg-neutral-800/70" : "invisible"}
                 `}
             >
@@ -293,7 +293,7 @@ const Navbar: React.FC = () => {
                         text-[#121212] 
                         text-[15px] 
                         w-5/6 
-                        h-screen 
+                        ctm-h-screen
                       bg-white
                         md:w-1/2 
                         lg:invisible 
