@@ -272,7 +272,7 @@ const Navbar: React.FC = () => {
                 </div>
             </div>
             {/* Mobile Side Menu */}
-            <div 
+            <div
                 className={`
                     z-10
                     w-full 
@@ -281,8 +281,10 @@ const Navbar: React.FC = () => {
                     left-0 
                     ctm-h-screen
                     lg:hidden
-                    bg-neutral-800/70
-                    ${tglSidebar ? "visible" : "invisible"}
+                    transition-all 
+                    duration-700
+                    ease-out 
+                    ${tglSidebar ? "bg-neutral-800/70" : "invisible"}
                 `}
             >
                 <div
