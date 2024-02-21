@@ -74,7 +74,7 @@ export default function Home() {
           >
             <div className="flex flex-col sm:flex-row">
               <Link 
-                className="relative overflow-hidden w-full sm:w-1/2 sm:ctm-h-screen h-[50vh]" 
+                className="relative overflow-hidden w-full sm:w-1/2 sm:ctm-h-screen ctm-h-screen-50" 
                 href="https://seikashiraga.official.ec/"
               >
                 <Image
@@ -82,7 +82,7 @@ export default function Home() {
                   width={1444}
                   height={1926}
                   alt="online store"
-                  className="object-cover object-top w-full sm:ctm-h-screen h-[50vh]"
+                  className="object-cover object-top w-full sm:ctm-h-screen ctm-h-screen-50"
                   quality={100}
                   priority={true}
                 />
@@ -98,7 +98,7 @@ export default function Home() {
                 </div>
               </Link>
               <Link 
-                className="relative overflow-hidden hidden sm:block w-full sm:w-1/2 sm:ctm-h-screen h-[50vh]" 
+                className="relative overflow-hidden hidden sm:block w-full sm:w-1/2 sm:ctm-h-screen ctm-h-screen-50" 
                 href="/collections/first-collection"
               >
                 <Image
@@ -106,7 +106,7 @@ export default function Home() {
                   width={1046}
                   height={1200}
                   alt="collection"
-                  className="object-cover object-top w-full sm:ctm-h-screen h-[50vh]"
+                  className="object-cover object-top w-full sm:ctm-h-screen ctm-h-screen-50"
                   quality={100}
                   priority={true}
                 />
@@ -123,7 +123,7 @@ export default function Home() {
               </Link>
               {/* Mobile IMG */}
               <Link 
-                className="relative overflow-hidden sm:hidden block w-full sm:w-1/2 sm:ctm-h-screen h-[50vh]" 
+                className="relative overflow-hidden sm:hidden block w-full sm:w-1/2 sm:ctm-h-screen ctm-h-screen-50" 
                 href="/collections/first-collection"
               >
                 <Image
@@ -131,7 +131,7 @@ export default function Home() {
                   width={2053}
                   height={798}
                   alt="collection"
-                  className="object-cover object-left w-full sm:ctm-h-screen h-[50vh]"
+                  className="object-cover object-left w-full sm:ctm-h-screen ctm-h-screen-50"
                   quality={100}
                   priority={true}
                 />
@@ -161,7 +161,7 @@ export default function Home() {
           >
             <div className="flex flex-col sm:flex-row">
               <Link 
-                className="relative overflow-hidden w-full sm:w-1/2 sm:ctm-h-screen h-[50vh]" 
+                className="relative overflow-hidden w-full sm:w-1/2 sm:ctm-h-screen ctm-h-screen-50" 
                 href="/about/about-seika-shiraga"
               >
                 <Image
@@ -169,7 +169,7 @@ export default function Home() {
                   width={1444}
                   height={1926}
                   alt="about seika shiraga"
-                  className="object-cover object-top w-full sm:ctm-h-screen h-[50vh]"
+                  className="object-cover object-top w-full sm:ctm-h-screen ctm-h-screen-50"
                   quality={100}
                   priority={true}
                 />
@@ -185,7 +185,7 @@ export default function Home() {
                 </div>
               </Link>
               <Link 
-                className="relative overflow-hidden w-full sm:w-1/2 sm:ctm-h-screen h-[50vh]" 
+                className="relative overflow-hidden w-full sm:w-1/2 sm:ctm-h-screen ctm-h-screen-50" 
                 href="/contact"
               >
                 <Image
@@ -193,7 +193,7 @@ export default function Home() {
                   width={2053}
                   height={798}
                   alt="contact"
-                  className="object-cover object-bottom w-full sm:ctm-h-screen h-[50vh]"
+                  className="object-cover object-bottom w-full sm:ctm-h-screen ctm-h-screen-50"
                   quality={100}
                   priority={true}
                 />
