@@ -281,7 +281,8 @@ const Navbar: React.FC = () => {
                     left-0 
                     ctm-h-screen
                     lg:hidden
-                    ${tglSidebar ? "bg-neutral-800/70" : "bg-inherit invisible"}
+                    bg-neutral-800/70
+                    ${tglSidebar ? "visible" : "invisible"}
                 `}
             >
                 <div
