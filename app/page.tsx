@@ -25,25 +25,26 @@ export default function Home() {
       <div className="relative">
         {/* PC IMG */}
         <Image
-          src="/assets/IMG_7412_1.jpg"
+          src="/assets/top_red_knit_pc.jpg"
           width={2053}
           height={798}
-          alt="Top Main PC"
-          className="md:block hidden w-full ctm-h-screen object-cover"
+          alt="seika shiraga top main"
+          className="sm:block hidden w-full ctm-h-screen object-cover"
           quality={100}
           priority={true}
         />
         {/* Mobile IMG */}
         <Image
-          src="/assets/top-main-left.jpg"
+          src="/assets/top_denim.jpg"
           width={1046}
           height={1200}
-          alt="Top Main Mobile"
-          className="block md:hidden w-full ctm-h-screen object-cover object-top"
+          alt="seika shiraga top main"
+          className="block sm:hidden w-full ctm-h-screen object-cover object-top"
           quality={100}
           priority={true}
         />
-        <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-full md:w-2/3 lg:w-1/2">
+        <div 
+          className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-full md:w-2/3 lg:w-1/2">
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,7 +56,7 @@ export default function Home() {
               src="/assets/seika-shiraga-logo-main.png"
               width={1772}
               height={1181}
-              alt="seika-shiraga-logo-main"
+              alt="seika-shiraga-logo"
               quality={100}
               priority={true}
             />
@@ -71,14 +72,17 @@ export default function Home() {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <div className="flex flex-col md:flex-row">
-              <Link className="relative overflow-hidden w-full md:w-1/2 md:ctm-h-screen h-[50vh]" href="https://seikashiraga.official.ec/">
+            <div className="flex flex-col sm:flex-row">
+              <Link 
+                className="relative overflow-hidden w-full sm:w-1/2 sm:ctm-h-screen h-[50vh]" 
+                href="https://seikashiraga.official.ec/"
+              >
                 <Image
-                  src="/assets/IMG_7407_1.jpg"
+                  src="/assets/top_beige_knit.jpg"
                   width={1444}
                   height={1926}
-                  alt="Top Collection Left"
-                  className="object-cover object-top w-full md:ctm-h-screen h-[50vh]"
+                  alt="online store"
+                  className="object-cover object-top w-full sm:ctm-h-screen h-[50vh]"
                   quality={100}
                   priority={true}
                 />
@@ -89,17 +93,20 @@ export default function Home() {
                     transition={{ duration: 1.6, delay: 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <h2 className="text-[#FBFBFB] text-base md:text-lg">ONLINE STORE</h2>
+                    <h2 className="text-[#FBFBFB] text-[15px] sm:text-[17px] font-bold">Online Store</h2>
                   </motion.div>
                 </div>
               </Link>
-              <Link className="relative overflow-hidden hidden md:block w-full md:w-1/2 md:ctm-h-screen h-[50vh]" href="/collections/first-collection">
+              <Link 
+                className="relative overflow-hidden hidden sm:block w-full sm:w-1/2 sm:ctm-h-screen h-[50vh]" 
+                href="/collections/first-collection"
+              >
                 <Image
-                  src="/assets/top-main-left.jpg"
+                  src="/assets/top_denim.jpg"
                   width={1046}
                   height={1200}
-                  alt="Top Main Left"
-                  className="object-cover object-top w-full md:ctm-h-screen h-[50vh]"
+                  alt="collection"
+                  className="object-cover object-top w-full sm:ctm-h-screen h-[50vh]"
                   quality={100}
                   priority={true}
                 />
@@ -110,18 +117,21 @@ export default function Home() {
                     transition={{ duration: 1.6, delay: 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <h2 className="text-[#FBFBFB] text-base md:text-lg">COLLECTION</h2>
+                    <h2 className="text-[#FBFBFB] text-[15px] sm:text-[17px] font-bold">Collection</h2>
                   </motion.div>
                 </div>
               </Link>
               {/* Mobile IMG */}
-              <Link className="relative overflow-hidden md:hidden block w-full md:w-1/2 md:ctm-h-screen h-[50vh]" href="/collections/first-collection">
+              <Link 
+                className="relative overflow-hidden sm:hidden block w-full sm:w-1/2 sm:ctm-h-screen h-[50vh]" 
+                href="/collections/first-collection"
+              >
                 <Image
-                  src="/assets/IMG_7412_1.jpg"
+                  src="/assets/top_red_knit_mb.jpg"
                   width={2053}
                   height={798}
-                  alt="Top Collection Mobile"
-                  className="object-cover object-left w-full md:ctm-h-screen h-[50vh]"
+                  alt="collection"
+                  className="object-cover object-left w-full sm:ctm-h-screen h-[50vh]"
                   quality={100}
                   priority={true}
                 />
@@ -132,7 +142,7 @@ export default function Home() {
                     transition={{ duration: 1.6, delay: 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <h2 className="text-[#FBFBFB] text-base md:text-lg">COLLECTION</h2>
+                    <h2 className="text-[#FBFBFB] text-[15px] sm:text-[17px] font-bold">Collection</h2>
                   </motion.div>
                 </div>
               </Link>
@@ -149,14 +159,17 @@ export default function Home() {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <div className="flex flex-col md:flex-row">
-              <Link className="relative overflow-hidden w-full md:w-1/2 md:ctm-h-screen h-[50vh]" href="/about/about-seika-shiraga">
+            <div className="flex flex-col sm:flex-row">
+              <Link 
+                className="relative overflow-hidden w-full sm:w-1/2 sm:ctm-h-screen h-[50vh]" 
+                href="/about/about-seika-shiraga"
+              >
                 <Image
-                  src="/assets/S__60383251.jpg"
+                  src="/assets/top_brown_knit.jpg"
                   width={1444}
                   height={1926}
-                  alt="Top Collection Left"
-                  className="object-cover object-top w-full md:ctm-h-screen h-[50vh]"
+                  alt="about seika shiraga"
+                  className="object-cover object-top w-full sm:ctm-h-screen h-[50vh]"
                   quality={100}
                   priority={true}
                 />
@@ -167,17 +180,20 @@ export default function Home() {
                     transition={{ duration: 1.6, delay: 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <h2 className="text-[#FBFBFB] text-base md:text-lg">ABOUT SEIKA SHIRAGA</h2>
+                    <h2 className="text-[#FBFBFB] text-[15px] sm:text-[17px] font-bold">About Seika Shiraga</h2>
                   </motion.div>
                 </div>
               </Link>
-              <Link className="relative overflow-hidden w-full md:w-1/2 md:ctm-h-screen h-[50vh]" href="/contact">
+              <Link 
+                className="relative overflow-hidden w-full sm:w-1/2 sm:ctm-h-screen h-[50vh]" 
+                href="/contact"
+              >
                 <Image
-                  src="/assets/S__60383288.jpg"
+                  src="/assets/top_white_shirt.jpg"
                   width={2053}
                   height={798}
-                  alt="Top Collection Mobile"
-                  className="object-cover object-bottom w-full md:ctm-h-screen h-[50vh]"
+                  alt="contact"
+                  className="object-cover object-bottom w-full sm:ctm-h-screen h-[50vh]"
                   quality={100}
                   priority={true}
                 />
@@ -188,7 +204,7 @@ export default function Home() {
                     transition={{ duration: 1.6, delay: 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <h2 className="text-[#FBFBFB] text-base md:text-lg">CONTACT</h2>
+                    <h2 className="text-[#FBFBFB] text-[15px] sm:text-[17px] font-bold">Contact</h2>
                   </motion.div>
                 </div>
               </Link>

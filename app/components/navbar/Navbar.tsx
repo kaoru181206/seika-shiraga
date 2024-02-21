@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
                     sm:hover:text-[#121212BF]
                     sm:hover:bg-white
                     transition-all 
-                    duration-500 
+                    duration-700
                     ease-out
                     group
                 `}
@@ -298,8 +298,8 @@ const Navbar: React.FC = () => {
                         md:w-1/2 
                         lg:invisible 
                         transition-all 
-                        duration-[400ms]
-                        ease-in 
+                        duration-700
+                        ease-out 
                         ${tglSidebar ? 'left-0' : 'left-[-100%]'}
                     `}
                 >
