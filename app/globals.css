@@ -11,6 +11,11 @@ details > summary::-webkit-details-marker {
 }
 
 @layer utilities {
+  .ctm-h-screen-50 {
+    height: 50vh;
+    height: 50dvh;
+  }
+
   .ctm-h-screen {
     height: 100vh;
     height: 100dvh;
