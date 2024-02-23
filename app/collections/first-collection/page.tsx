@@ -1,10 +1,10 @@
 import ImageList from "@/app/components/ImageList";
 import supabase from "@/app/utils/supabase";
 
-export const revalidate = 0
+export const revalidate = 360
 
 async function getData() {
-    const res = await supabase.from("collection_image").select("*").order("id, id_seq");
+    const res = await supabase.from("collection_images").select("*").order("id, id_seq");
 
     if (res.error) {
         throw new Error('Failed to fetch data');

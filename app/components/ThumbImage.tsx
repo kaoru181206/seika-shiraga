@@ -46,6 +46,8 @@ const ThumbImage: React.FC<ThumbImageProps> = ({
                     duration-150 
                     cursor-pointer
                 "
+                quality={100}
+                priority={true}
             />
             <span 
                 className={`

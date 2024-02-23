@@ -92,7 +92,7 @@ const ImageList: React.FC<ImageListProps> = ({
                 <div 
                     className="
                         w-full 
-                        min-h-screen 
+                        ctm-min-h-screen
                         text-[#121212] 
                         pt-28
                     "
