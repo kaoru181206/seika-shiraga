@@ -9,7 +9,7 @@ https://seika-shiraga.vercel.app/
 ## 使用技術
 | Category          | Technology Stack                                     |
 | ----------------- | --------------------------------------------------   |
-| Frontend          | TypeScript, Next.js                                  |
+| Frontend          | TypeScript, Next.js, Tailwind CSS                    |
 | Backend           | TypeScript, Supabase                                 |
 | Infrastructure    | Vercel                                               |
 | Database          | PostgreSQL                                           |
