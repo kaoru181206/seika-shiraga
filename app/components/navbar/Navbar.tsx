@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import Link from 'next/link'
 import Image from "next/image";
 import { TglNavClrContext, TglSidebarContext } from '../ClientOnly';
+import MenuItem from "./MenuItem";
 
 const Navbar: React.FC = () => {
     // Navbar Context
@@ -151,82 +152,27 @@ const Navbar: React.FC = () => {
                                 items-center
                             "
                         >
-                            <div
-                                className="
-                                    group/collections 
-                                    px-4 
-                                    py-[30px]
-                                "
-                            >
-                                <Link className="hover:text-[#121212]" href="#">
-                                    Collections
-                                </Link>
-                                <div
-                                    className="
-                                        hidden 
-                                        w-full 
-                                        px-12 
-                                        h-[7vh] 
-                                        absolute 
-                                        top-20 
-                                        left-0 
-                                        bg-white 
-                                        group-hover/collections:block 
-                                        hover:block
-                                    "
-                                >
-                                    <ul className="">
-                                        <li>
-                                            <Link className="hover:text-[#121212]" href="/collections/first-collection">
-                                                First Collection
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div
-                                className="
-                                    group/about 
-                                    px-4 
-                                    py-[30px]
-                                "
-                            >
-                                <Link className="hover:text-[#121212]" href="#">
-                                    About
-                                </Link>
-                                <div
-                                    className="
-                                        hidden 
-                                        w-full 
-                                        px-12 
-                                        h-[7vh] 
-                                        absolute 
-                                        top-20 
-                                        left-0 
-                                        bg-white 
-                                        group-hover/about:block 
-                                        hover:block
-                                    "
-                                >
-                                    <ul>
-                                        <li>
-                                            <Link className="hover:text-[#121212]" href="/about/about-seika-shiraga">
-                                                About Seika Shiraga
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div
-                                className="
-                                    px-4 
-                                    py-[30px]
-                                "
-                            >
-                                <Link className="hover:text-[#121212]" href="/contact">
-                                    Contact
-                                </Link>
-                            </div>
+                            <MenuItem 
+                                groupName="collections" 
+                                path="/collections/first-collection"
+                                label="Collections"
+                                childLabel="First Collection"
+                                style="px-4 py-[30px]"
+                            />
+                            <MenuItem 
+                                groupName="about" 
+                                path="/about/about-seika-shiraga"
+                                label="About"
+                                childLabel="About Seika Shiraga"
+                                style="px-4 py-[30px]"
+                            />
+                            <MenuItem 
+                                groupName="" 
+                                path="/contact"
+                                label="Contact"
+                                childLabel=""
+                                style="px-4 py-[30px]"
+                            />
                         </div>
                     </div>
                     <div
@@ -253,21 +199,17 @@ const Navbar: React.FC = () => {
                             hidden 
                             pr-4 
                             pl-40 
-                            py-[30px] 
                             mr-4 
                             lg:block
                         "
                     >
-                        <div
-                            className="
-                                items-center 
-                                space-x-4
-                            "
-                        >
-                            <Link className="hover:text-[#121212]" href="https://seikashiraga.official.ec/">
-                                Online Store
-                            </Link>
-                        </div>
+                        <MenuItem
+                            groupName=""
+                            path="https://seikashiraga.official.ec/"
+                            label="Online Store"
+                            childLabel=""
+                            style="items-center space-x-4"
+                        />
                     </div>
                 </div>
             </div>
