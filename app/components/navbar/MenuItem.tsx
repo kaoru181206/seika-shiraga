@@ -5,7 +5,6 @@ interface MenuItemProps {
     path: string;
     label: string;
     childLabel: string | null;
-    style: string;
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -13,13 +12,12 @@ const MenuItem: React.FC<MenuItemProps> = ({
     path,
     label,
     childLabel,
-    style,
 }) => {
     return (
         <div
             className={`
                 ${groupName && `group/${groupName}`}
-                ${style}
+                px-4 py-[30px]
             `}
         >
             <Link className="hover:text-[#121212]" href={`${!groupName && `${path}` }`}>

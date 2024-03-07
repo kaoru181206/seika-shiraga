@@ -157,21 +157,18 @@ const Navbar: React.FC = () => {
                                 path="/collections/first-collection"
                                 label="Collections"
                                 childLabel="First Collection"
-                                style="px-4 py-[30px]"
                             />
                             <MenuItem 
                                 groupName="about" 
                                 path="/about/about-seika-shiraga"
                                 label="About"
                                 childLabel="About Seika Shiraga"
-                                style="px-4 py-[30px]"
                             />
                             <MenuItem 
                                 groupName="" 
                                 path="/contact"
                                 label="Contact"
                                 childLabel=""
-                                style="px-4 py-[30px]"
                             />
                         </div>
                     </div>
@@ -197,8 +194,7 @@ const Navbar: React.FC = () => {
                     <div
                         className="
                             hidden 
-                            pr-4 
-                            pl-40 
+                            pl-36 
                             mr-4 
                             lg:block
                         "
@@ -208,7 +204,6 @@ const Navbar: React.FC = () => {
                             path="https://seikashiraga.official.ec/"
                             label="Online Store"
                             childLabel=""
-                            style="items-center space-x-4"
                         />
                     </div>
                 </div>
