@@ -153,22 +153,13 @@ const Navbar: React.FC = () => {
                             "
                         >
                             <MenuItem 
-                                groupName="collections" 
-                                path="/collections/first-collection"
-                                label="Collections"
-                                childLabel="First Collection"
+                                itemName="collections" 
                             />
                             <MenuItem 
-                                groupName="about" 
-                                path="/about/about-seika-shiraga"
-                                label="About"
-                                childLabel="About Seika Shiraga"
+                                itemName="about" 
                             />
                             <MenuItem 
-                                groupName="" 
-                                path="/contact"
-                                label="Contact"
-                                childLabel=""
+                                itemName="contact" 
                             />
                         </div>
                     </div>
@@ -200,10 +191,7 @@ const Navbar: React.FC = () => {
                         "
                     >
                         <MenuItem
-                            groupName=""
-                            path="https://seikashiraga.official.ec/"
-                            label="Online Store"
-                            childLabel=""
+                            itemName="onlineStore"
                         />
                     </div>
                 </div>
