@@ -15,7 +15,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
     return (
         <div>
             {
-                menuItem && menuItem.submenu.length ? (
+                menuItem && menuItem.submenu && menuItem.submenu.length > 0 ? (
                     <div
                         className={`
                             group/${itemName}
@@ -42,7 +42,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
                             <ul>
                                 {
                                     menuItem.submenu.map((childMenu, childMenuIndex) => (
-                                        <li key={childMenuIndex}>
+                                        <li className="pb-3" key={childMenuIndex}>
                                             <Link className="hover:text-[#121212]" href={`${menuItem.path}${childMenu.path}`}>
                                                 {childMenu.title}
                                             </Link>
