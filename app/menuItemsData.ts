@@ -1,7 +1,9 @@
-export const menuItemData = {
-  'collections': {
+export const menuItemData = [
+  {
     title: 'Collections',
     path: '/collections',
+    position: 'left',
+    group: 'collections',
     submenu: [
       {
         title: 'First Collection',
@@ -9,9 +11,11 @@ export const menuItemData = {
       },
     ],
   },
-  'about': {
+  {
     title: 'About',
     path: '/about',
+    position: 'left',
+    group: 'about',
     submenu: [
       {
         title: 'About Seika Shiraga',
@@ -19,14 +23,30 @@ export const menuItemData = {
       },
     ],
   },
-  'contact': {
+  {
     title: 'Contact',
     path: '/contact',
+    position: 'left',
+    group: '',
     submenu: []
   },
-  'onlineStore': {
+  {
     title: 'Online Store',
     path: 'https://seikashiraga.official.ec/',
+    position: 'right',
+    group: '',
     submenu: []
   },
-}
+  // {
+  //   title: 'Test',
+  //   path: '/test',
+  //   position: 'right',
+  //   group: 'test',
+  //   submenu: [
+  //     {
+  //       title: 'test',
+  //       path: '/test',
+  //     },
+  //   ]
+  // },
+]
