@@ -23,138 +23,74 @@ const MenuItems: React.FC<MenuItemsProps> = ({
     menuItemData,
     position,
 }) => {
+
+    const items = menuItemData.filter((item) => position 
+        ? item.position == 'left' 
+        : item.position == 'right'
+    )
+
     return (
-        <div>
-            {
-                position ? (
-                    <div
-                        className="
-                            hidden 
-                            lg:block
-                        "
-                    >
-                        <div
-                            className="
-                                    ml-4 
-                                    flex 
-                                    items-center
-                                "
-                        >
+        <div
+            className={`
+                hidden 
+                lg:block
+                ${!position && 'pl-36'}
+            `}
+        >
+            <div
+                className={`
+                    ${position ? 'ml-4' : 'mr-4'}
+                    flex 
+                    items-center
+                `}
+            >
+                {
+                    items.map((item, index) => (
+                        <div key={index}>
                             {
-                                menuItemData.filter((item) => item.position == 'left')
-                                    .map((item, index) => (
-                                        <div key={index}>
-                                            {
-                                                item.submenu.length > 0 ? (
-                                                    <div
-                                                        className={`
-                                                            group/${item.group}
-                                                            px-4 py-[30px]
-                                                        `}
-                                                    >
-                                                        <Link className="hover:text-[#121212]" href="">
-                                                            {item.title}
-                                                        </Link>
-                                                        <div
-                                                            className={`
-                                                                hidden 
-                                                                w-full 
-                                                                px-12 
-                                                                h-[7vh] 
-                                                                absolute 
-                                                                top-20 
-                                                                left-0 
-                                                              bg-white
-                                                                group-hover/${item.group}:block
-                                                            `}
-                                                        >
-                                                            <SubMenuItems
-                                                                subMenu={item.submenu}
-                                                                parentPath={item.path}
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                ) : (
-                                                    <div
-                                                        className="px-4 py-[30px]"
-                                                    >
-                                                        <Link className="hover:text-[#121212]" href={item.path}>
-                                                            {item.title}
-                                                        </Link>
-                                                    </div>
-                                                )
-                                            }
+                                item.submenu.length > 0 ? (
+                                    <div
+                                        className={`
+                                            group/${item.group}
+                                            px-4 py-[30px]
+                                        `}
+                                    >
+                                        <Link className="hover:text-[#121212]" href="">
+                                            {item.title}
+                                        </Link>
+                                        <div
+                                            className={`
+                                                hidden 
+                                                px-12 
+                                                w-full 
+                                                absolute 
+                                                h-[7vh] 
+                                                top-20 
+                                                left-0 
+                                                bg-white 
+                                                group-hover/${item.group}:block 
+                                            `}
+                                        >
+                                            <SubMenuItems
+                                                subMenu={item.submenu}
+                                                parentPath={item.path}
+                                            />
                                         </div>
-                                    ))
+                                    </div>
+                                ) : (
+                                    <div
+                                        className="px-4 py-[30px]"
+                                    >
+                                        <Link className="hover:text-[#121212]" href={item.path}>
+                                            {item.title}
+                                        </Link>
+                                    </div>
+                                )
                             }
                         </div>
-                    </div>
-                ) : (
-                    <div
-                        className="
-                            hidden 
-                            pl-36 
-                            lg:block
-                        "
-                    >
-                        <div
-                            className="
-                                mr-4 
-                                flex
-                                items-center
-                            "
-                        >
-                            {
-                                menuItemData.filter((item) => item.position == 'right')
-                                    .map((item, index) => (
-                                        <div key={index}>
-                                            {
-                                                item.submenu.length > 0 ? (
-                                                    <div
-                                                        className={`
-                                                            group/${item.group}
-                                                            px-4 py-[30px]
-                                                        `}
-                                                    >
-                                                        <Link className={`group-hover/${item.group}:text-[#121212]`} href="">
-                                                            {item.title}
-                                                        </Link>
-                                                        <div
-                                                            className={`
-                                                                hidden 
-                                                                w-full 
-                                                                px-12 
-                                                                h-[7vh] 
-                                                                absolute 
-                                                                top-20 
-                                                                left-0 
-                                                              bg-white
-                                                                group-hover/${item.group}:block
-                                                            `}
-                                                        >
-                                                            <SubMenuItems
-                                                                subMenu={item.submenu}
-                                                                parentPath={item.path}
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                ) : (
-                                                    <div
-                                                        className="px-4 py-[30px]"
-                                                    >
-                                                        <Link className="hover:text-[#121212]" href={item.path}>
-                                                            {item.title}
-                                                        </Link>
-                                                    </div>
-                                                )
-                                            }
-                                        </div>
-                                    ))
-                            }
-                        </div>
-                    </div>
-                )
-            }
+                    ))
+                }
+            </div>
         </div>
     )
 }
