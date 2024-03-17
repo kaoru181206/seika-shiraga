@@ -5,8 +5,8 @@ import Link from 'next/link'
 import Image from "next/image";
 import { TglNavClrContext, TglSidebarContext } from '../ClientOnly';
 import MenuItems from "./MenuItems";
-import SideMenu from "./SideMenu";
-import { menuItemData } from "@/app/menuItemsData";
+import SideMenu from "./SideMenuItems";
+import { menuItemData, sideMenuItemData } from "@/app/menuItemsData";
 
 const Navbar: React.FC = () => {
     // Navbar Context
@@ -171,7 +171,11 @@ const Navbar: React.FC = () => {
                 </div>
             </div>
             {/* Mobile Side Menu */}
-            <SideMenu tglSidebar={tglSidebar} onClick={() => setTglSidebar(false)} />
+            <SideMenu 
+                sideMenuItemData={sideMenuItemData}
+                tglSidebar={tglSidebar} 
+                onClick={() => setTglSidebar(false)} 
+            />
         </nav>
     )
 }
