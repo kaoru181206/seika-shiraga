@@ -24,6 +24,8 @@ const MenuItems: React.FC<MenuItemsProps> = ({
     position,
 }) => {
 
+    // positionがtrueの場合、menuItemDataのposition == 'left'(左側に表示するアイテム)
+    // positionがfalseの場合、menuItemDataのposition == 'right'(右側に表示するアイテム)を返す
     const items = menuItemData.filter((item) => position 
         ? item.position == 'left' 
         : item.position == 'right'
@@ -48,6 +50,8 @@ const MenuItems: React.FC<MenuItemsProps> = ({
                     items.map((item, index) => (
                         <div key={index}>
                             {
+                                // サブメニューが存在する場合、アイテムhover時にSubMenuItemsを表示
+                                // 存在しない場合、アイテムにリンクを設定
                                 item.submenu.length > 0 ? (
                                     <div
                                         className={`

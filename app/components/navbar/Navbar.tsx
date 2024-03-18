@@ -22,10 +22,9 @@ const Navbar: React.FC = () => {
         // Scroll Event
         const handleScroll = () => {
             const currentScrollPos = window.scrollY;
-            if (currentScrollPos > prevScrollPos) {
-
-            }
+            // 現在位置より上にスクロールした場合、true
             setHighScrollPosPrev(currentScrollPos < prevScrollPos);
+            // 現在位置がページ最上部の場合、true
             setIsScrollTop(currentScrollPos === 0);
             setPrevScrollPos(currentScrollPos);
         };
@@ -42,6 +41,10 @@ const Navbar: React.FC = () => {
         setTglSidebar(!tglSidebar);
     }
 
+    // Navbarスタイル適用条件
+    // 前回スクロール位置より上にスクロール かつ ページ最上部ではない
+    // サイドメニュー開
+    // TOPページ以外のページ
     const navStyleFlg = ((highScrollPosPrev && !isScrollTop) || tglSidebar || tglNavClr);
 
     return (
@@ -141,10 +144,12 @@ const Navbar: React.FC = () => {
                             />
                         </button>
                     </div>
+                    {/* Left Menu */}
                     <MenuItems 
                         menuItemData={menuItemData}
                         position={true}
                     />
+                    {/* Logo */}
                     <div
                         className={`
                             items-center 
@@ -164,6 +169,7 @@ const Navbar: React.FC = () => {
                             />
                         </Link>
                     </div>
+                    {/* Right Menu */}
                     <MenuItems 
                         menuItemData={menuItemData}
                         position={false}

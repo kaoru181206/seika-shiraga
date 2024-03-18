@@ -61,6 +61,8 @@ const SideMenu: React.FC<SideMenuItemsProps> = ({
             >
                 <div>
                     {sideMenuItemData.map((item, index) =>
+                        // サブメニューが存在する場合、アイテム押下時にSideSubMenuItemsを表示
+                        // 存在しない場合、アイテムにリンクを設定
                         item.submenu.length > 0 ? (
                             <details
                                 className="
@@ -81,6 +83,7 @@ const SideMenu: React.FC<SideMenuItemsProps> = ({
                                     "
                                 >
                                     {item.title}
+                                    {/* + - */}
                                     <div className="flex justify-center items-center pl-1">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
