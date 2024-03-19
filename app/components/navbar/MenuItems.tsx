@@ -53,17 +53,19 @@ const MenuItems: React.FC<MenuItemsProps> = ({
                                 // サブメニューが存在する場合、アイテムhover時にSubMenuItemsを表示
                                 // 存在しない場合、アイテムにリンクを設定
                                 item.submenu.length > 0 ? (
-                                    <div
-                                        className={`
-                                            group/${item.group}
-                                            px-4 py-[30px]
-                                        `}
-                                    >
-                                        <Link className="hover:text-[#121212]" href="">
-                                            {item.title}
-                                        </Link>
+                                    <div>
                                         <div
-                                            className={`
+                                            className="
+                                                peer
+                                                px-4 py-[30px]
+                                            "
+                                        >
+                                            <Link className="hover:text-[#121212]" href="">
+                                                {item.title}
+                                            </Link>
+                                        </div>
+                                        <div
+                                            className="
                                                 hidden 
                                                 px-12 
                                                 w-full 
@@ -72,8 +74,9 @@ const MenuItems: React.FC<MenuItemsProps> = ({
                                                 top-20 
                                                 left-0 
                                                 bg-white 
-                                                group-hover/${item.group}:block 
-                                            `}
+                                                peer-hover/:block 
+                                                hover:block
+                                            "
                                         >
                                             <SubMenuItems
                                                 subMenu={item.submenu}
